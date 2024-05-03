@@ -1,0 +1,246 @@
+body {
+    margin-bottom: 0px 0px 0px 0px;
+    margin: 0;
+    padding: 0;
+    font-family:  monospace;
+    background-color:#fafaf0;
+}
+
+.header {
+    margin: 0px;
+    border-bottom: 3px solid #215bb3;
+    height:120px;
+    align-items: center;
+
+}
+.header img{
+    padding: 0px;
+    margin: 0px;
+    width: 120px;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+.container {
+    display: flex;
+    width: 80%;
+    margin: auto;
+    justify-content: space-around;
+}
+.titulo{
+    margin: 0px;
+    display: flex;
+    align-items: center;
+}
+
+
+.navbar {
+    display: flex;
+    flex-direction: row;
+    list-style: none;
+    width: 300px;
+    justify-content: space-around;
+    color:#215bb3;
+    align-items: center;
+    
+}
+
+
+.header .container {
+    justify-content: space-between;
+ 
+}
+
+.banner {
+    padding: 30px 20px 60px 10px;
+    color: white;
+    height: 650px;
+    background-image: url(Imagens/2972001-homem-pescando-no-barco-vetor.jpg);
+    background-size: cover;
+
+
+}
+
+.banner .container {
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    background-size: 100%;
+}
+
+.banner .container p {
+    text-shadow: 0px 0px 5px white;
+    color: black;
+    font-size: 40px;
+    width: 25%;
+}
+.banner .container b {
+    text-shadow: 0px 0px px white;
+    color: black;
+    font-size: 28px;
+}
+
+.social {
+    background-image: url();
+    padding: 40px 30px;
+}
+
+.card_institucional {
+    width: 150px;
+    text-align: center;
+
+}
+
+.card_img {
+    width: 100px;
+    margin-top: 15px;
+}
+
+.card h4 {
+    font-size: 24px;
+}
+
+.footer {
+    height: 100px;
+    background-color: #0b5f81;
+
+}
+
+.footer .container {
+    justify-content: center;
+    align-items: center;
+    height: 100px;
+
+}
+
+.login {
+    display: flex;
+    justify-content: center;
+    background-image: url(bg-jelly-fish-para_outras_pags.png);
+    background-size: cover;
+    background-position: center;
+    align-items: center;
+
+}
+
+.login .container {
+    justify-content: center;
+
+    background-size: cover;
+
+    height: 75vh;
+    align-items: center;
+    margin: 30px;
+
+}
+
+.card {
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+    height: 300px;
+    width: 300px;
+    border-radius: 10px;
+    border: 3px solid;
+
+}
+
+.card h2 {
+    color: palevioletred
+}
+
+.campo {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.campo input {
+    width: 200px;
+    padding: 7px 15px;
+    border: 2px solid #32c9cd;
+
+}
+
+.formulario {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 75vh;
+    color: palevioletred;
+}
+
+.header a {
+    text-decoration: none;
+    color: blue;
+    cursor: alias;
+}
+
+
+.caixa_formulario_cadastro {
+    background: white;
+    width: 400px;
+    height: 390px;
+    color: palevioletred;
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    align-items: center;
+    border-radius: 4px;
+}
+
+.caixa_formulario_login {
+    background: white;
+    width: 400px;
+    height: 280px;
+    color: palevioletred;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border-radius: 4px;
+}
+
+.caixa_formulario h1 {
+    font-size: 30px;
+}
+
+.formulario {
+    display: flex;
+    flex-direction: column;
+    width: 200px;
+    height: 200px;
+}
+
+button {
+    margin-top: 10px;
+    background: #e1374e;
+    color: #fff;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 10px;
+    font-size: 20px;
+    width: 120px;
+    align-self: center;
+    cursor: pointer;
+    margin: 10px;
+}
+
+input {
+    padding: 10px 15px;
+    text-align: center;
+    border: 2px solid rgb(82, 143, 196);
+    border-radius: 10px;
+    width: 200px;
+    padding: 7px 15px;
+}
+
+span {
+    font-size: 20px;
+}
+.agora{
+    font-size: 20px;
+    font-style: bold;
+    text-shadow: 0px 0px 2px black;
+}
