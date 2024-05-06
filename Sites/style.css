@@ -3,29 +3,32 @@ body {
     margin: 0;
     padding: 0;
     font-family:  monospace;
-    background-color:#fafaf0;
+    background-color:whitesmoke ;
 }
 
 .header {
     margin: 0px;
-    border-bottom: 3px solid #215bb3;
-    height:120px;
+    border-bottom: 3px solid whitesmoke;
+    height:100px;
+    display: flex;
     align-items: center;
 
 }
 .header img{
     padding: 0px;
     margin: 0px;
-    width: 120px;
+    width: 90px;
     display: flex;
-    align-items: center;
+    align-items: start;
     flex-direction: column;
+
 }
 .container {
     display: flex;
     width: 80%;
     margin: auto;
     justify-content: space-around;
+    
 }
 .titulo{
     margin: 0px;
@@ -35,42 +38,39 @@ body {
 
 
 .navbar {
+    font-size: 15px;
     display: flex;
     flex-direction: row;
     list-style: none;
     width: 300px;
-    justify-content: space-around;
+    height: 100px;
+    justify-content: space-between;
     color:#215bb3;
     align-items: center;
-    
+    margin-bottom: auto;
+    margin-top : auto;
+    background-color:whitesmoke;
 }
 
 
 .header .container {
-    justify-content: space-between;
+    justify-content: space-between; 
+    align-items: center;
+    
  
 }
 
 .banner {
-    padding: 30px 20px 60px 10px;
-    color: white;
-    height: 650px;
-    background-image: url(Imagens/2972001-homem-pescando-no-barco-vetor.jpg);
-    background-size: cover;
-
-
-}
-
-.banner .container {
-    justify-content: center;
-    align-items: center;
-    height: 100%;
-    background-size: 100%;
+    padding: 30px 80px 10px 10px;
+    color: #ffffff;
+    height: 500px;
+    background-image:url(Imagens/2972001-homem-pescando-no-barco-vetor.jpg);
+background-size: cover;
 }
 
 .banner .container p {
     text-shadow: 0px 0px 5px white;
-    color: black;
+    color: black;   
     font-size: 40px;
     width: 25%;
 }
@@ -81,7 +81,8 @@ body {
 }
 
 .social {
-    background-image: url();
+    
+    background-color: #0b5f81;
     padding: 40px 30px;
 }
 
