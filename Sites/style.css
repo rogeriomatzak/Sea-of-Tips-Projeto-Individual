@@ -2,40 +2,51 @@ body {
     margin-bottom: 0px 0px 0px 0px;
     margin: 0;
     padding: 0;
-    font-family:  monospace;
-    background-color:whitesmoke ;
+    font-family: monospace;
+    background-color: rgb(36, 60, 70);
 }
 
 .header {
     margin: 0px;
-    border-bottom: 3px solid whitesmoke;
-    height:100px;
+    border-bottom: 3px solid rgb(36, 60, 70);
+    height: 100px;
     display: flex;
     align-items: center;
+    
 
 }
-.header img{
+
+.header img {
     padding: 0px;
     margin: 0px;
     width: 90px;
     display: flex;
     align-items: start;
     flex-direction: column;
+    
 
 }
+
 .container {
     display: flex;
     width: 80%;
     margin: auto;
     justify-content: space-around;
-    
+    color: #fff;
+
 }
-.titulo{
+
+.titulo {
     margin: 0px;
     display: flex;
     align-items: center;
-}
+    font-weight: bold;
+    font-size: 40px;
+    flex-direction: column;
 
+    
+
+}
 
 .navbar {
     font-size: 15px;
@@ -45,45 +56,85 @@ body {
     width: 300px;
     height: 100px;
     justify-content: space-between;
-    color:#215bb3;
+    color: #ffffff;
     align-items: center;
     margin-bottom: auto;
-    margin-top : auto;
-    background-color:whitesmoke;
+    margin-top: auto;
+    background-color: rgb(36, 60, 70);
+  
 }
 
 
 .header .container {
-    justify-content: space-between; 
+    justify-content: space-between;
     align-items: center;
-    
- 
+
+
 }
 
 .banner {
     padding: 30px 80px 10px 10px;
     color: #ffffff;
-    height: 500px;
-    background-image:url(Imagens/2972001-homem-pescando-no-barco-vetor.jpg);
-background-size: cover;
+    height: 650px;
+    background-image: url(Imagens/Design\ sem\ nome\ \(1\).png);
+    background-size: cover;
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    text-shadow: 0px 0px 10px rgba(0, 0, 0, 0.551);
+    text-align: center;
+    display: flex;
+    justify-content: center;
+
 }
 
-.banner .container p {
-    text-shadow: 0px 0px 5px white;
-    color: black;   
-    font-size: 40px;
-    width: 25%;
-}
-.banner .container b {
-    text-shadow: 0px 0px px white;
-    color: black;
-    font-size: 28px;
-}
 
 .social {
-    
-    background-color: #0b5f81;
+    display: flex;
+    justify-content: space-evenly;
+    background-color: rgb(36, 60, 70);
     padding: 40px 30px;
+}
+
+.card_descricao{
+    background-color: rgb(255, 255, 255);
+   display: flex;
+   justify-content: space-evenly;
+   width: 150px;
+   height: 33  0px;
+   border-radius: 4px;
+   margin-top: 15px;
+   box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.403);
+   color: rgb(0, 0, 0);
+   font-size: 15px;
+
+   
+
+}
+.card_escrita{   
+    text-align: center;
+     background-color: rgb(255, 255, 255);
+    display: flex;
+    width: 400px;
+    height: 33  0px;
+    border-radius: 4px;
+    margin-top: 15px;
+    box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.403);
+    color: rgb(0, 0, 0);
+    font-size: 15px;
+
+}
+
+.card_img {
+    background-color: white;
+    display: flex;
+    height: 400px;
+    width: 400px;
+    border-radius: 10px;
+    margin-top: 15px;
+    background-image: url(Imagens/download.png);
+    background-size: 100%;
+    box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.403);
 }
 
 .card_institucional {
@@ -92,10 +143,7 @@ background-size: cover;
 
 }
 
-.card_img {
-    width: 100px;
-    margin-top: 15px;
-}
+
 
 .card h4 {
     font-size: 24px;
@@ -103,14 +151,18 @@ background-size: cover;
 
 .footer {
     height: 100px;
-    background-color: #0b5f81;
+    background-color: rgb(36, 60, 70);
+    border-radius: 2px solid black;
 
 }
 
 .footer .container {
-    justify-content: center;
+    justify-content: start;
     align-items: center;
-    height: 100px;
+    height: 120px;
+    color: #fff;
+    justify-content: space-around;
+    font-size: 15px;
 
 }
 
@@ -174,7 +226,7 @@ background-size: cover;
 
 .header a {
     text-decoration: none;
-    color: blue;
+    color: rgb(253, 253, 253);
     cursor: alias;
 }
 
@@ -240,7 +292,8 @@ input {
 span {
     font-size: 20px;
 }
-.agora{
+
+.agora {
     font-size: 20px;
     font-style: bold;
     text-shadow: 0px 0px 2px black;
