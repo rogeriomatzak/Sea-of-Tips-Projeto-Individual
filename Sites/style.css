@@ -8,10 +8,11 @@ body {
 
 .header {
     margin: 0px;
-    border-bottom: 3px solid rgb(36, 60, 70);
+    border-bottom: 3px solid rgb(0, 0, 0);
     height: 100px;
     display: flex;
     align-items: center;
+    background-color:  rgb(25, 56, 70);
     
 
 }
@@ -33,6 +34,7 @@ body {
     margin: auto;
     justify-content: space-around;
     color: #fff;
+    
 
 }
 
@@ -60,7 +62,7 @@ body {
     align-items: center;
     margin-bottom: auto;
     margin-top: auto;
-    background-color: rgb(36, 60, 70);
+    background-color: rgb(25, 56, 70);
   
 }
 
@@ -68,7 +70,7 @@ body {
 .header .container {
     justify-content: space-between;
     align-items: center;
-
+   background-color: rgb(25, 56, 70);
 
 }
 
@@ -99,7 +101,8 @@ body {
 .card_descricao{
     background-color: rgb(255, 255, 255);
    display: flex;
-   justify-content: space-evenly;
+   justify-content: center;
+   align-items: center;
    width: 150px;
    height: 33  0px;
    border-radius: 4px;
@@ -150,8 +153,8 @@ body {
 }
 
 .footer {
-    height: 100px;
-    background-color: rgb(36, 60, 70);
+    height: auto;
+    background-color: rgb(25, 56, 70);
     border-radius: 2px solid black;
 
 }
@@ -169,7 +172,6 @@ body {
 .login {
     display: flex;
     justify-content: center;
-    background-image: url(bg-jelly-fish-para_outras_pags.png);
     background-size: cover;
     background-position: center;
     align-items: center;
@@ -178,15 +180,27 @@ body {
 
 .login .container {
     justify-content: center;
-
     background-size: cover;
-
     height: 75vh;
     align-items: center;
     margin: 30px;
 
 }
-
+.banner_login_cadastro{
+    background-image: url(Imagens/LoginECadastro.jpg);
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+.banner_login_cadastro h3{
+    font-size: 15px;
+    font-family: monospace;
+    margin: 5px;
+}
+.banner_login_cadastro a{
+    text-decoration: none;
+    color: black;
+    font-size: bold;
+}
 .card {
     background-color: white;
     display: flex;
@@ -211,7 +225,7 @@ body {
 .campo input {
     width: 200px;
     padding: 7px 15px;
-    border: 2px solid #32c9cd;
+    border: 2px solid  rgb(25, 56, 70) ;
 
 }
 
@@ -221,7 +235,7 @@ body {
     align-items: center;
     justify-content: center;
     height: 75vh;
-    color: palevioletred;
+    color: black;
 }
 
 .header a {
@@ -235,19 +249,20 @@ body {
     background: white;
     width: 400px;
     height: 390px;
-    color: palevioletred;
+    color: black;
     display: flex;
     flex-direction: column;
     justify-content: start;
     align-items: center;
     border-radius: 4px;
+    box-shadow:0px 0px 20px solid black ;
 }
 
 .caixa_formulario_login {
     background: white;
     width: 400px;
     height: 280px;
-    color: palevioletred;
+    color: black;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -268,7 +283,7 @@ body {
 
 button {
     margin-top: 10px;
-    background: #e1374e;
+    background: #144a63;
     color: #fff;
     padding: 10px 15px;
     border: none;
@@ -283,7 +298,7 @@ button {
 input {
     padding: 10px 15px;
     text-align: center;
-    border: 2px solid rgb(82, 143, 196);
+    border: 2px solid rgb(0, 0, 0);
     border-radius: 10px;
     width: 200px;
     padding: 7px 15px;
@@ -296,5 +311,5 @@ span {
 .agora {
     font-size: 20px;
     font-style: bold;
-    text-shadow: 0px 0px 2px black;
+    text-shadow: 0px 0px 5px black;
 }
