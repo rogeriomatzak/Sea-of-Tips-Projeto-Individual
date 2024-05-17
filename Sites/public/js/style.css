@@ -12,8 +12,8 @@ body {
     height: 100px;
     display: flex;
     align-items: center;
-    background-color:  rgb(25, 56, 70);
-    
+    background-color: rgb(25, 56, 70);
+
 
 }
 
@@ -24,7 +24,7 @@ body {
     display: flex;
     align-items: start;
     flex-direction: column;
-    
+
 
 }
 
@@ -34,8 +34,15 @@ body {
     margin: auto;
     justify-content: space-around;
     color: #fff;
-    
 
+}
+
+.container_blog {
+    display: flex;
+    width: 80%;
+    margin: auto;
+    justify-content: center;
+    color: #fff;
 }
 
 .titulo {
@@ -45,9 +52,7 @@ body {
     font-weight: bold;
     font-size: 40px;
     flex-direction: column;
-
-    
-
+    color: white;
 }
 
 .navbar {
@@ -63,14 +68,14 @@ body {
     margin-bottom: auto;
     margin-top: auto;
     background-color: rgb(25, 56, 70);
-  
+
 }
 
 
 .header .container {
     justify-content: space-between;
     align-items: center;
-   background-color: rgb(25, 56, 70);
+    background-color: rgb(25, 56, 70);
 
 }
 
@@ -98,28 +103,30 @@ body {
     padding: 40px 30px;
 }
 
-.card_descricao{
+.card_descricao {
     background-color: rgb(255, 255, 255);
-   display: flex;
-   justify-content: center;
-   align-items: center;
-   width: 150px;
-   height: 33  0px;
-   border-radius: 4px;
-   margin-top: 15px;
-   box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.403);
-   color: rgb(0, 0, 0);
-   font-size: 15px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: fit-content;
+    height: 30 0px;
+    border-radius: 4px;
+    margin-top: 15px;
+    box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.403);
+    color: rgb(0, 0, 0);
+    font-size: 15px;
 
-   
+
 
 }
-.card_escrita{   
+
+.card_escrita {
     text-align: center;
-     background-color: rgb(255, 255, 255);
+    background-color: rgb(255, 255, 255);
     display: flex;
     width: 400px;
-    height: 33  0px;
+    right: fit-content;
+    height: 33 0px;
     border-radius: 4px;
     margin-top: 15px;
     box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.403);
@@ -186,21 +193,25 @@ body {
     margin: 30px;
 
 }
-.banner_login_cadastro{
+
+.banner_login_cadastro {
     background-image: url(Imagens/LoginECadastro.jpg);
     background-size: cover;
     background-repeat: no-repeat;
 }
-.banner_login_cadastro h3{
+
+.banner_login_cadastro h3 {
     font-size: 15px;
     font-family: monospace;
     margin: 5px;
 }
-.banner_login_cadastro a{
+
+.banner_login_cadastro a {
     text-decoration: none;
     color: black;
     font-size: bold;
 }
+
 .card {
     background-color: white;
     display: flex;
@@ -225,7 +236,7 @@ body {
 .campo input {
     width: 200px;
     padding: 7px 15px;
-    border: 2px solid  rgb(25, 56, 70) ;
+    border: 2px solid rgb(25, 56, 70);
 
 }
 
@@ -246,20 +257,20 @@ body {
 
 
 .caixa_formulario_cadastro {
-    background-color:rgba(255, 252, 252, 0.5);
+    background-color: rgba(255, 252, 252, 0.5);
     width: 400px;
     height: 390px;
     color: black;
     display: flex;
     flex-direction: column;
-    justify-content: start;
+    justify-content: center;
     align-items: center;
     border-radius: 4px;
-    box-shadow:0px 0px 20px solid black ;
+    box-shadow: 0px 0px 20px solid black;
 }
 
 .caixa_formulario_login {
-    background: white;
+    background: rgba(255, 252, 252, 0.5);
     width: 400px;
     height: 280px;
     color: black;
@@ -305,11 +316,112 @@ input {
 }
 
 span {
-    font-size: 20px;
+    font-size: 15px;
 }
 
 .agora {
     font-size: 20px;
     font-style: bold;
     text-shadow: 0px 0px 5px black;
+}
+
+.pesquisa_blog {
+    flex-direction: row;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    text-decoration: none;
+    width: 100%;
+    font-size: 16px;
+}
+
+a {
+    text-decoration: none;
+    color: white;
+}
+
+.pesquisa_blog li {
+    display: inline;
+    justify-content: space-between;
+}
+
+.subtitulo {
+    margin: 20px;
+    display: flex;
+    align-items: center;
+    font-weight: bold;
+    font-size: 35px;
+    flex-direction: column;
+    color: white;
+    text-shadow: 0px 0px 0px 0px black;
+}
+.subtitulo2{
+    margin: 20px;
+    display: flex;
+    align-items: center;
+    font-weight: bold;
+    font-size: 30px;
+    flex-direction: column;
+    color: white;
+    text-shadow: 0px 0px 0px 0px black;
+}
+
+.card_blog_pratica {
+    background-color: white;
+    display: flex;
+    height: 300px;
+    width: 300px;
+    border-radius: 10px;
+    margin-top: 15px;
+    background-image: url(Imagens/pratica-1024x683.jpg);
+    background-size: cover;
+    box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.403);
+
+}
+
+.card_blog_comunicacao {
+    background-color: white;
+    display: flex;
+    height: 300px;
+    width: 300px;
+    border-radius: 10px;
+    margin-top: 15px;
+    background-image: url(Imagens/Comunicacao_329181-20049.avif);
+    background-position: center;
+    background-size: cover;
+    box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.403);
+}
+
+.card_blog_atencao {
+    background-color: white;
+    display: flex;
+    height: 300px;
+    width: 300px;
+    border-radius: 10px;
+    margin-top: 15px;
+    background-image: url(Imagens/jovem-pescador-pescando-no-lago-ou-rio-vista-traseira-do-cara-concentrado-esperando-para-pegar-alguns-peixes-homem-segurando-a-vara-de-pescar.avif);
+    background-position: center;
+    background-size: cover;
+    box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.403);
+
+}
+.card_blog_hora{
+    background-color: white;
+    display: flex;
+    height: 300px;
+    width: 300px;
+    border-radius: 10px;
+    margin-top: 15px;
+    background-image: url(Imagens/sielencio.jpg);
+    background-position: center;
+    background-size: cover;
+    box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.403);
+}
+.social_blog {
+    background-color: rgb(36, 60, 70);
+    padding: 40px 30px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    flex-wrap: wrap;
 }
