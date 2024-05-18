@@ -108,7 +108,7 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    width: fit-content;
+    width: 700px;
     height: 30 0px;
     border-radius: 4px;
     margin-top: 15px;
@@ -121,6 +121,7 @@ body {
 }
 
 .card_escrita {
+    align-items: center;
     text-align: center;
     background-color: rgb(255, 255, 255);
     display: flex;
@@ -132,7 +133,10 @@ body {
     box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.403);
     color: rgb(0, 0, 0);
     font-size: 15px;
-
+}
+.card_escrita b{
+    color: black;
+    font-size: 20px;
 }
 
 .card_img {
@@ -197,6 +201,7 @@ body {
 .banner_login_cadastro {
     background-image: url(Imagens/LoginECadastro.jpg);
     background-size: cover;
+    background-attachment: fixed;
     background-repeat: no-repeat;
 }
 
@@ -241,12 +246,11 @@ body {
 }
 
 .formulario {
+    margin: 0px;
+    padding: 40px 20px 00px 20px;
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center;
-    height: 75vh;
-    color: black;
 }
 
 .header a {
@@ -300,7 +304,7 @@ button {
     border: none;
     border-radius: 10px;
     font-size: 20px;
-    width: 120px;
+    width: 180px;
     align-self: center;
     cursor: pointer;
     margin: 10px;
@@ -422,6 +426,142 @@ a {
     padding: 40px 30px;
     display: flex;
     flex-direction: row;
-    justify-content: space-around;
+    justify-content: space-evenly;
     flex-wrap: wrap;
+}
+
+.card_varas_ultraleve{
+    background-color: white;
+    display: flex;
+    height: 300px;
+    width: 300px;
+    border-radius: 10px;
+    margin-top: 15px;
+    background-image: url(Imagens/varaultraleve.png);
+    background-position: center;
+    background-size: cover;
+    box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.403);
+}
+.card_varas_leve{
+    background-color: white;
+    display: flex;
+    height: 300px;
+    width: 300px;
+    border-radius: 10px;
+    margin-top: 15px;
+    background-image: url(Imagens/varaleve.jpg);
+    background-position: center;
+    background-size: cover;
+    box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.403);
+
+}
+.card_varas_media{
+    background-color: white;
+    display: flex;
+    height: 300px;
+    width: 300px;
+    border-radius: 10px;
+    margin-top: 15px;
+    background-image: url(Imagens/varamedia.webp);
+    background-position: center;
+    background-size: cover;
+    box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.403);
+}
+.card_varas_pesada{
+    background-color: white;
+    display: flex;
+    height: 300px;
+    width: 300px;
+    border-radius: 10px;
+    margin-top: 15px;
+    background-image: url(Imagens/varapesada.webp);
+    background-position: center;
+    background-size: cover;
+    box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.403);
+}
+.card_varas_musky{
+    background-color: white;
+    display: flex;
+    height: 300px;
+    width: 300px;
+    border-radius: 10px;
+    margin-top: 15px;
+    background-image: url(Imagens/varamusky.webp);
+    background-position: center;
+    background-size: cover;
+    box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.403);
+}
+.card_blog_aves{
+    background-color: white;
+    display: flex;
+    height: 300px;
+    width: 300px;
+    border-radius: 10px;
+    margin-top: 15px;
+    background-image: url(Imagens/aves.jpg);
+    background-position: center;
+    background-size: cover;
+    box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.403);
+
+}
+.card_blog_pedras{
+    background-color: white;
+    display: flex;
+    height: 300px;
+    width: 300px;
+    border-radius: 10px;
+    margin-top: 15px;
+    background-image: url(Imagens/pedras.jpg);
+    background-position: center;
+    background-size: cover;
+    box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.403);
+
+}
+.card_blog_capim{
+    background-color: white;
+    display: flex;
+    height: 300px;
+    width: 300px;
+    border-radius: 10px;
+    margin-top: 15px;
+    background-image: url(Imagens/capim.jpg);
+    background-position: center;
+    background-size: cover;
+    box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.403);
+}
+.card_blog_canais{
+    background-color: white;
+    display: flex;
+    height: 300px;
+    width: 300px;
+    border-radius: 10px;
+    margin-top: 15px;
+    background-image: url(Imagens/canais.jpg);
+    background-position: center;
+    background-size: cover;
+    box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.403);
+}
+.card_blog_doce{
+    background-color: white;
+    display: flex;
+    height: 300px;
+    width: 300px;
+    border-radius: 10px;
+    margin-top: 15px;
+    background-image: url(Imagens/aguadoce.jpg);
+    background-position: center;
+    background-size: cover;
+    box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.403);
+}
+.card_blog_salgada{
+    background-color: white;
+    display: flex;
+    height: 300px;
+    width: 300px;
+    border-radius: 10px;
+    margin-top: 15px;
+    background-image: url(Imagens/peixeaguasalgada.webp);
+    background-position: center;
+    background-size: cover;
+    box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.403);
 }

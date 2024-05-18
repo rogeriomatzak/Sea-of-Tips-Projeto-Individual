@@ -6,13 +6,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" type="image/x-icon" href="css/Imagens/Logo.png">
     <title>Cadastro</title>
-    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
     <div class="header">
         <div class="container">
-            <h1 class="titulo"><img src="css/Imagens/Logo.png" alt=""></h1>
+            <h1 class="titulo"><img src="Imagens/Logo.png" alt=""></h1>
             <ul class="navbar">
                 <a href="Home.html">Inicio</a>
                 <a href="blog.html">Blog</a>
@@ -26,27 +26,20 @@
         <div class="login">
             <div class="container">
                 <div class="caixa_formulario_cadastro">
-                    <h2 class="formulario">Cadastre-se</h2>
+                    <h2 class="formulario">CADASTRA-SE</h2>
                     <div class="formulario">
                     </div>
-                    <div class="campo">
-                        <label for="">Nome:</label>
-                        <input type="text" placeholder="Seu nome" />
-                    </div>
-
-                    <div class="campo">
-                        <label for="">E-mail:</label>
-                        <input type="text" placeholder="meuemail@provedor.com" />
-                    </div>
-                    <div class="campo">
-                        <label for="">Senha:</label>
-                        <input type="password" placeholder="******" />
-                    </div>
-                    <div class="campo">
-                        <label for="">Confirmação da Senha:</label>
-                        <input type="password" placeholder="******" />
-                        <button>Cadastrar</button>
-                        <h3>Já Possui conta? <a href="login.html">Fazer Login</a></h3>
+                    <span><input type="text" placeholder="Nome Completo" id="nome_input"></span>
+                    <div id="div_nome" class="resposta"></div><br>
+                    <span><input type="text" placeholder="E-mail" id="email_input"></span>
+                    <div id="div_nascimento" class="resposta"></div><br>
+                    <span><input type="text" placeholder="Senha" id="senha_input"></span>
+                    <div id="div_cpf" class="resposta"></div><br>
+                    <span><input type="email" placeholder="Confirmar Senha" id="confirmacao_senha_input"></span>
+                    <div id="div_email" class="resposta"></div><br>
+                  <button onclick="cadastrar()">Cadastre-se</button>
+                  <div id="div_nulo" class="resposta"></div><div id="div_nulo" class="resposta"></div>
+                        <h3>JÁ POSSUI  CONTA ? <a href="login.html">FAZER LOGIN</a></h3>
                     </div>
                 </div>
             </div>
@@ -57,27 +50,93 @@
 </html>
 <script>
     function cadastrar() {
-    aguardar();
+      aguardar();
     var nomeVar = nome_input.value;
     var emailVar = email_input.value;
     var senhaVar = senha_input.value;
     var confirmacaoSenhaVar = confirmacao_senha_input.value;
  
+
+    var cadastro = true;
+    var tamanho_nome = nomeVar.length;
+    var arroba = emailVar.indexOf('@');
+    var tamanho_senha = senhaVar.length;
+    var caracter_senha = senhaVar.indexOf('#') >= 0 || senhaVar.indexOf('%') >= 0 || senhaVar.indexOf('!') >= 0
+
     if (
       nomeVar == "" ||
       emailVar == "" ||
       senhaVar == "" ||
-      confirmacaoSenhaVar == "" 
+      confirmacaoSenhaVar == ""
     ) {
-      cardErro.style.display = "block";
-      mensagem_erro.innerHTML =
-        "(Mensagem de erro para todos os campos em branco)";
-
+      div_nulo.innerHTML = `*Preencha o(s) campo(s) acima com seus dados`
       finalizarAguardar();
       return false;
     } else {
-      setInterval(sumirMensagem, 5000);
+      div_nulo.innerHTML = ''
     }
+
+    if (cadastro = true) {
+      if (nomeVar >= 0 || nomeVar <= 0) {
+        div_nome.innerHTML = `*Coloque apenas letras nesse campo`
+        cadastro = false;
+        finalizarAguardar();
+        return false;
+      } else if (tamanho_nome < 8) {
+        div_nome.innerHTML = `Coloque não possui 8 letras`
+        cadastro = false;
+        finalizarAguardar();
+        return false;
+      } else {
+        div_nome.innerHTML = ''
+      }
+
+
+      if (tamanho_telefone != 11) {
+        div_telefone.innerHTML = `Siga o exemplo de telefone valido 55119XXXXYYYY`
+        cadastro = false;
+        finalizarAguardar();
+        return false;
+      } else {
+        div_telefone.innerHTML = ''
+      }
+
+      if (arroba < 0 ) {
+        div_email.innerHTML = `Coloque um E-mail valido`
+        finalizarAguardar();
+        return false;
+      } else {
+        div_email.innerHTML = ''
+      }
+
+      if (tamanho_senha < 8) {
+        div_senha.innerHTML = `A senha deve conter no mínimo 8 caracteres`
+        cadastro = false;
+        finalizarAguardar();
+        return false;
+      } else if (caracter_senha == false) {
+        div_senha.innerHTML = `Precisa de um dos três caracteres especiais '!' '#' '%'`
+        cadastro = false;
+        finalizarAguardar();
+        return false;
+      } else {
+        div_senha.innerHTML = ''
+      }
+
+      if (confirmacaoSenhaVar != senhaVar) {
+        div_senha_confirme.innerHTML = `A senha não está igual a senha anterior`
+        cadastro = false;
+        finalizarAguardar();
+        return false;
+      } else {
+        div_senha_confirme.innerHTML = ''
+      }
+}
+
+
+
+
+  
 
     // Enviando o valor da nova input
     fetch("/usuarios/cadastrar", {
@@ -86,18 +145,18 @@
         "Content-Type": "application/json",
       },
       body: JSON.stringify({
-     
+        // crie um atributo que recebe o valor recuperado aqui
+        // Agora vá para o arquivo routes/usuario.js
         nomeServer: nomeVar,
         emailServer: emailVar,
         senhaServer: senhaVar,
-      
+  
       }),
     })
       .then(function (resposta) {
-        console.log("resposta: ", resposta);
+        console.log("resposta: ",resposta);
 
         if (resposta.ok) {
-          cardErro.style.display = "block";
 
           mensagem_erro.innerHTML =
             "Cadastro realizado com sucesso! Redirecionando para tela de Login...";
@@ -113,13 +172,26 @@
         }
       })
       .catch(function (resposta) {
-        console.log(`#ERRO: ${resposta}`);
         finalizarAguardar();
       });
 
-    return false;
   }
-  function sumirMensagem() {
-    cardErro.style.display = "none";
+
+
+  function listar() {
+    fetch("/empresas/listar", {
+      method: "GET",
+    })
+      .then(function (resposta) {
+        resposta.json().then((empresas) => {
+          empresas.forEach((empresa) => {
+            listaEmpresas.innerHTML += `<option value='${empresa.id}'>${empresa.cnpj}</option>`;
+          });
+        });
+      })
+      .catch(function (resposta) {
+        console.log(`#ERRO: ${resposta}`);
+      });
   }
+
 </script>
