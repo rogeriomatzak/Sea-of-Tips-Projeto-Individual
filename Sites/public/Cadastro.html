@@ -14,7 +14,7 @@
         <div class="container">
             <h1 class="titulo"><img src="Imagens/Logo.png" alt=""></h1>
             <ul class="navbar">
-                <a href="Home.html">Inicio</a>
+                <a href="index.html">Inicio</a>
                 <a href="blog.html">Blog</a>
                 <li>|</li>
                 <a href="login.html">Login</a>
@@ -49,94 +49,32 @@
 
 </html>
 <script>
-    function cadastrar() {
-      aguardar();
+   function cadastrar() {
+    aguardar();
+
+    //Recupere o valor da nova input pelo nome do id
+    // Agora vá para o método fetch logo abaixo
     var nomeVar = nome_input.value;
     var emailVar = email_input.value;
     var senhaVar = senha_input.value;
     var confirmacaoSenhaVar = confirmacao_senha_input.value;
- 
-
-    var cadastro = true;
-    var tamanho_nome = nomeVar.length;
-    var arroba = emailVar.indexOf('@');
-    var tamanho_senha = senhaVar.length;
-    var caracter_senha = senhaVar.indexOf('#') >= 0 || senhaVar.indexOf('%') >= 0 || senhaVar.indexOf('!') >= 0
-
+   
     if (
       nomeVar == "" ||
       emailVar == "" ||
       senhaVar == "" ||
-      confirmacaoSenhaVar == ""
+      confirmacaoSenhaVar == "" ||
+      empresaVar == ""
     ) {
-      div_nulo.innerHTML = `*Preencha o(s) campo(s) acima com seus dados`
+      cardErro.style.display = "block";
+      mensagem_erro.innerHTML =
+        "(Mensagem de erro para todos os campos em branco)";
+
       finalizarAguardar();
       return false;
     } else {
-      div_nulo.innerHTML = ''
+      setInterval(sumirMensagem, 5000);
     }
-
-    if (cadastro = true) {
-      if (nomeVar >= 0 || nomeVar <= 0) {
-        div_nome.innerHTML = `*Coloque apenas letras nesse campo`
-        cadastro = false;
-        finalizarAguardar();
-        return false;
-      } else if (tamanho_nome < 8) {
-        div_nome.innerHTML = `Coloque não possui 8 letras`
-        cadastro = false;
-        finalizarAguardar();
-        return false;
-      } else {
-        div_nome.innerHTML = ''
-      }
-
-
-      if (tamanho_telefone != 11) {
-        div_telefone.innerHTML = `Siga o exemplo de telefone valido 55119XXXXYYYY`
-        cadastro = false;
-        finalizarAguardar();
-        return false;
-      } else {
-        div_telefone.innerHTML = ''
-      }
-
-      if (arroba < 0 ) {
-        div_email.innerHTML = `Coloque um E-mail valido`
-        finalizarAguardar();
-        return false;
-      } else {
-        div_email.innerHTML = ''
-      }
-
-      if (tamanho_senha < 8) {
-        div_senha.innerHTML = `A senha deve conter no mínimo 8 caracteres`
-        cadastro = false;
-        finalizarAguardar();
-        return false;
-      } else if (caracter_senha == false) {
-        div_senha.innerHTML = `Precisa de um dos três caracteres especiais '!' '#' '%'`
-        cadastro = false;
-        finalizarAguardar();
-        return false;
-      } else {
-        div_senha.innerHTML = ''
-      }
-
-      if (confirmacaoSenhaVar != senhaVar) {
-        div_senha_confirme.innerHTML = `A senha não está igual a senha anterior`
-        cadastro = false;
-        finalizarAguardar();
-        return false;
-      } else {
-        div_senha_confirme.innerHTML = ''
-      }
-}
-
-
-
-
-  
 
     // Enviando o valor da nova input
     fetch("/usuarios/cadastrar", {
@@ -150,13 +88,14 @@
         nomeServer: nomeVar,
         emailServer: emailVar,
         senhaServer: senhaVar,
-  
+        empresaServer: empresaVar
       }),
     })
       .then(function (resposta) {
-        console.log("resposta: ",resposta);
+        console.log("resposta: ", resposta);
 
         if (resposta.ok) {
+          cardErro.style.display = "block";
 
           mensagem_erro.innerHTML =
             "Cadastro realizado com sucesso! Redirecionando para tela de Login...";
@@ -172,11 +111,12 @@
         }
       })
       .catch(function (resposta) {
+        console.log(`#ERRO: ${resposta}`);
         finalizarAguardar();
       });
 
+    return false;
   }
-
 
   function listar() {
     fetch("/empresas/listar", {
@@ -194,4 +134,7 @@
       });
   }
 
+  function sumirMensagem() {
+    cardErro.style.display = "none";
+  }
 </script>
