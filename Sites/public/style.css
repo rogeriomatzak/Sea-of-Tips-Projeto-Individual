@@ -126,7 +126,7 @@ body {
     background-color: rgb(255, 255, 255);
     display: flex;
     width: 400px;
-    right: fit-content;
+    right: 800px;
     height: 33 0px;
     border-radius: 4px;
     margin-top: 15px;
