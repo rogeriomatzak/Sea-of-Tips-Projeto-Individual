@@ -123,19 +123,20 @@ body {
 
 .card_escrita {
     padding: 2%;
-    align-items: center;
-    text-align: center;
     display: flex;
+    justify-content: center; 
+    align-items: center; 
     width: 500px;
-    right: 800px;
-    height: 33 0px;
+    height: 330px;
     border-radius: 4px;
     margin-top: 15px;
-    color:white;
+    color: white;
     font-size: 18px;
     font-family: Verdana, Geneva, Tahoma, sans-serif;
-    
+   
 }
+
+
 
 
 .card_img {
@@ -393,69 +394,6 @@ a {
 
 }
 
-.card_varas_ultraleve{
-    background-color: white;
-    display: flex;
-    height: 300px;
-    width: 300px;
-    border-radius: 10px;
-    margin-top: 15px;
-    background-image: url(Imagens/varaultraleve.png);
-    background-position: center;
-    background-size: cover;
-    box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.403);
-}
-.card_varas_leve{
-    background-color: white;
-    display: flex;
-    height: 300px;
-    width: 300px;
-    border-radius: 10px;
-    margin-top: 15px;
-    background-image: url(Imagens/varaleve.jpg);
-    background-position: center;
-    background-size: cover;
-    box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.403);
-
-}
-.card_varas_media{
-    background-color: white;
-    display: flex;
-    height: 300px;
-    width: 300px;
-    border-radius: 10px;
-    margin-top: 15px;
-    background-image: url(Imagens/varamedia.webp);
-    background-position: center;
-    background-size: cover;
-    box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.403);
-}
-.card_varas_pesada{
-    background-color: white;
-    display: flex;
-    height: 300px;
-    width: 300px;
-    border-radius: 10px;
-    margin-top: 15px;
-    background-image: url(Imagens/varapesada.webp);
-    background-position: center;
-    background-size: cover;
-    box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.403);
-}
-.card_varas_musky{
-    background-color: white;
-    display: flex;
-    height: 300px;
-    width: 300px;
-    border-radius: 10px;
-    margin-top: 15px;
-    background-image: url(Imagens/varamusky.webp);
-    background-position: center;
-    background-size: cover;
-    box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.403);
-}
-}
-
 .card_escrita:hover{
     transform: scale(102%);
     filter: drop-shadow(0px 0px 5px rgb(0, 0, 0));
@@ -509,7 +447,7 @@ a {
     text-align: center;
     transition: transform 0.8s;
     transform-style: preserve-3d;
-    background-image: url(Imagens/jovem-pescador-pescando-no-lago-ou-rio-vista-traseira-do-cara-concentrado-esperando-para-pegar-alguns-peixes-homem-segurando-a-vara-de-pescar.avif);
+    background-image: url(Imagens/jovem-pescador-pescando-no-lago-ou-rio-vista-traseira-do-cara-concentrado-esperando-para-pegar-alg.avif);
     background-size: cover;
     background-repeat: no-repeat;
   }
@@ -585,6 +523,54 @@ a {
     background-size: cover;
     background-repeat: no-repeat;
 }
+.flip-card-leve {
+    position: fixed;
+    width: 400px;
+    height: 360px;
+    border-radius: 3%;
+    text-align: center;
+    transition: transform 0.8s;
+    transform-style: preserve-3d;
+    background-image: url(Imagens/varaleve.jpg);
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+.flip-card-media {
+    position: fixed;
+    width: 400px;
+    height: 360px;
+    border-radius: 3%;
+    text-align: center;
+    transition: transform 0.8s;
+    transform-style: preserve-3d;
+    background-image: url(Imagens/varamedia.webp);
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+.flip-card-pesada {
+    position: fixed;
+    width: 400px;
+    height: 360px;
+    border-radius: 3%;
+    text-align: center;
+    transition: transform 0.8s;
+    transform-style: preserve-3d;
+    background-image: url(Imagens/varapesada.webp);
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+.flip-card-musky {
+    position: fixed;
+    width: 400px;
+    height: 360px;
+    border-radius: 3%;
+    text-align: center;
+    transition: transform 0.8s;
+    transform-style: preserve-3d;
+    background-image: url(Imagens/varamusky.webp);
+    background-size: cover;
+    background-repeat: no-repeat;
+}
   .flip-card:hover .flip-card-pratica {
     transform: rotateY(180deg);
   }
@@ -610,6 +596,18 @@ a {
     transform: rotateY(180deg);
   }
   .flip-card:hover .flip-card-canais {
+    transform: rotateY(180deg);
+  }
+  .flip-card:hover .flip-card-leve {
+    transform: rotateY(180deg);
+  }
+  .flip-card:hover .flip-card-media {
+    transform: rotateY(180deg);
+  }
+  .flip-card:hover .flip-card-pesada {
+    transform: rotateY(180deg);
+  }
+  .flip-card:hover .flip-card-musky {
     transform: rotateY(180deg);
   }
   .flip-card-front, .flip-card-back {
