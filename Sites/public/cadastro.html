@@ -37,6 +37,9 @@
                     <div id="div_cpf" class="resposta"></div><br>
                     <span><input type="email" placeholder="Confirmar Senha" id="confirmacao_senha_input"></span>
                     <div id="div_email" class="resposta"></div><br>
+                    <span><select name="peixes" id="listarpeixes">
+                      <option value="#">Selecionar Peixe Favorito</option>
+                    </select></span>
                   <button onclick="cadastrar()">Cadastre-se</button>
                   <div id="div_nulo" class="resposta"></div><div id="div_nulo" class="resposta"></div>
                         <h3>JÁ POSSUI  CONTA ? <a href="login.html">FAZER LOGIN</a></h3>
@@ -63,6 +66,8 @@
     var emailVar = email_input.value;
     var senhaVar = senha_input.value;
     var confirmacaoSenhaVar = confirmacao_senha_input.value;
+    var fkPeixesVar =listarpeixes.value
+   
    
     if (
       nomeVar == "" ||
@@ -91,6 +96,7 @@
         nomeServer: nomeVar,
         emailServer: emailVar,
         senhaServer: senhaVar,
+        fkPeixesServer:fkPeixesVar
       }),
     })
       .then(function (resposta) {
