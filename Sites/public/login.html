@@ -28,67 +28,79 @@
         <div class="caixa_formulario_login">
           <div class="formulario">
             <h2><b>LOGIN</b></h2>
-           <span><input type="email" placeholder="E-mail" id="email_input"><br></span>
+            <span><input type="email" placeholder="E-mail" id="email_input"><br></span>
             <div id="div_email" class="resposta"></div><br>
             <span><input type="password" placeholder="Senha" id="senha_input"><br></span>
             <div id="div_senha" class="resposta"></div>
             <span><button onclick="entrar()">Entrar</button></span>
             <div id="div_nulo" class="resposta"></div>
+          </div>
         </div>
-    </div>
 </body>
+
 </html>
 <script>
 
 
   function entrar() {
 
-      var emailVar = email_input.value;
-      var senhaVar = senha_input.value;
+    var emailVar = email_input.value;
+    var senhaVar = senha_input.value;
 
-      if (emailVar == "" || senhaVar == "") {
-          cardErro.style.display = "block"
-          mensagem_erro.innerHTML = "(Mensagem de erro para todos os campos em branco)";
-          finalizarAguardar();
-          return false;
+   
+      if (emailVar == "") {
+        div_email.innerHTML = "Preencha o email corretamente!";
+      } else {
+        div_email.innerHTML = "";
       }
+      if (senhaVar == "") {
+        div_senha.innerHTML = "Preencha a senha corretamente!";
+      } else {
+        div_senha.innerHTML = "";
+      }
+      if (emailVar == "" || senhaVar == "") {
+      div_nulo.innerHTML = "Preencha todos os campos";
+    } else {
+      div_nulo.innerHTML = "";
 
-      console.log("FORM LOGIN: ", emailVar);
-      console.log("FORM SENHA: ", senhaVar);
+    }
 
-      fetch("/usuarios/autenticar", {
-          method: "POST",
-          headers: {
-              "Content-Type": "application/json"
-          },
-          body: JSON.stringify({
-              emailServer: emailVar,
-              senhaServer: senhaVar
-          })
-      }).then(function (resposta) {
-          console.log("ESTOU NO THEN DO entrar()!")
+    console.log("FORM LOGIN: ", emailVar);
+    console.log("FORM SENHA: ", senhaVar);
 
-          if (resposta.ok) {
-              console.log(resposta);
-
-              resposta.json().then(json => {
-                  console.log(json);
-                  console.log(JSON.stringify(json));
-                  sessionStorage.EMAIL_USUARIO = json.email;
-                  sessionStorage.NOME_USUARIO = json.nome;
-                  sessionStorage.ID_USUARIO = json.id;
-                  sessionStorage.AQUARIOS = JSON.stringify(json.aquarios)
-
-                  setTimeout(function () {
-                      window.location = "./dashboard/cards.html";
-                  }, 1000); // apenas para exibir o loading
-
-              });
-
-          } 
+    fetch("/usuarios/autenticar", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify({
+        emailServer: emailVar,
+        senhaServer: senhaVar
       })
+    }).then(function (resposta) {
+      console.log("ESTOU NO THEN DO entrar()!")
 
-      return false;
+      if (resposta.ok) {
+        console.log(resposta);
+
+        resposta.json().then(json => {
+          console.log(json);
+          console.log(JSON.stringify(json));
+          sessionStorage.EMAIL_USUARIO = json.email;
+          sessionStorage.NOME_USUARIO = json.nome;
+          sessionStorage.ID_USUARIO = json.id;
+          sessionStorage.AQUARIOS = JSON.stringify(json.aquarios)
+
+          setTimeout(function () {
+            window.location = "./dashboard/cards.html";
+          }, 1000); // apenas para exibir o loading
+
+        });
+
+      }
+    })
+
+    return false;
   }
 
 

@@ -2,129 +2,184 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="icon" type="image/x-icon" href="css/Imagens/Logo.png">
-    <title>Cadastro</title>
-    <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" type="image/x-icon" href="css/Imagens/Logo.png">
+  <title>Cadastro</title>
+  <link rel="stylesheet" href="style.css">
 </head>
 
-<body>
-    <div class="header">
-        <div class="container">
-            <h1 class="titulo"><img src="Imagens/Logo.png" alt=""></h1>
-            <ul class="navbar">
-                <a href="index.html">Inicio</a>
-                <a href="blog.html">Blog</a>
-                <li>|</li>
-                <a href="login.html">Login</a>
-                <a class="agora" href="Cadastro.html">Cadastro</a>
-            </ul>
-        </div>
+<body onload="listar()">
+  <div class="header">
+    <div class="container">
+      <h1 class="titulo"><img src="Imagens/Logo.png" alt=""></h1>
+      <ul class="navbar">
+        <li><a href="index.html">Inicio</a></li>
+        <li><a href="blog.html">Blog</a></li>
+        <li>|</li>
+        <li><a href="login.html">Login</a></li>
+        <li><a class="agora" href="Cadastro.html">Cadastro</a></li>
+      </ul>
     </div>
-    <div class="banner_login_cadastro">
-        <div class="login">
-            <div class="container">
-                <div class="caixa_formulario_cadastro">
-                    <h2 class="formulario">CADASTRA-SE</h2>
-                    <div class="formulario">
-                    </div>
-                    <span><input type="text" placeholder="Nome Completo" id="nome_input"></span>
-                    <div id="div_nome" class="resposta"></div><br>
-                    <span><input type="text" placeholder="E-mail" id="email_input"></span>
-                    <div id="div_nascimento" class="resposta"></div><br>
-                    <span><input type="text" placeholder="Senha" id="senha_input"></span>
-                    <div id="div_cpf" class="resposta"></div><br>
-                    <span><input type="email" placeholder="Confirmar Senha" id="confirmacao_senha_input"></span>
-                    <div id="div_email" class="resposta"></div><br>
-                    <span><select name="peixes" id="listarpeixes">
-                      <option value="#">Selecionar Peixe Favorito</option>
-                    </select></span>
-                  <button onclick="cadastrar()">Cadastre-se</button>
-                  <div id="div_nulo" class="resposta"></div><div id="div_nulo" class="resposta"></div>
-                        <h3>JÁ POSSUI  CONTA ? <a href="login.html">FAZER LOGIN</a></h3>
-                    </div>
-                </div>
-            </div>
+  </div>
+  <div class="banner_login_cadastro">
+    <div class="login">
+      <div class="container">
+        <div class="caixa_formulario_cadastro">
+          <h2 class="formulario">CADASTRA-SE</h2>
+          <span><input type="text" placeholder="Nome Completo" id="nome_input"></span>
+          <div id="div_nome" class="resposta"></div><br>
+          <span><input type="text" placeholder="E-mail" id="email_input"></span>
+          <div id="div_email" class="resposta"></div><br>
+          <span><input type="password" placeholder="Senha" id="senha_input"></span>
+          <div id="div_senha" class="resposta"></div><br>
+          <span><input type="password" placeholder="Confirmar Senha" id="confirmacao_senha_input"></span>
+          <div id="div_senha_confirme" class="resposta"></div><br>
+          <span>
+            <select id="listapeixes">
+              <option selected disabled>Selecione o seu peixe favorito</option>
+            </select>
+          </span>
+          <div id="div_peixes" class="resposta"></div><br>
+          <button onclick="cadastrar()">Cadastre-se</button>
+          <div id="div_nulo" class="resposta"></div><br>
+          <h3>JÁ POSSUI CONTA ? <a href="login.html">FAZER LOGIN</a></h3>
         </div>
-    </div>
-    <div id="cardErro">
-      <div id="mensagem_erro">
       </div>
+    </div>
+  </div>
+  <div id="cardErro">
+    <div id="mensagem_erro"></div>
     <div id="div_aguardar"></div>
   </div>
+
+  <script>
+    function cadastrar() {
+      var nomeVar = nome_input.value.trim();
+      var emailVar = email_input.value.trim();
+      var senhaVar = senha_input.value.trim();
+      var confirmacaoSenhaVar = confirmacao_senha_input.value.trim();
+      var peixesVar = listapeixes.value.trim();
+      var cadastro = true;
+      var tamanho_nome = nomeVar.length;
+      var arroba = emailVar.indexOf('@');
+      var tamanho_senha = senhaVar.length;
+      var caracter_senha = senhaVar.indexOf('#') >= 0 || senhaVar.indexOf('%') >= 0 || senhaVar.indexOf('!') >= 0;
+
+      if (nomeVar === "" || emailVar === "" || senhaVar === "" || confirmacaoSenhaVar === "" || peixesVar === "") {
+        div_nulo.innerHTML = `*Preencha todos os campos acima com seus dados`;
+        return false;
+      } else {
+        div_nulo.innerHTML = '';
+      }
+
+      if (tamanho_nome < 8) {
+        div_nome.innerHTML = `O nome precisa ter pelo menos 8 caracteres`;
+        cadastro = false;
+      } else {
+        div_nome.innerHTML = '';
+      }
+
+      if (arroba === -1) {
+        div_email.innerHTML = `Insira um e-mail válido`;
+        cadastro = false;
+      } else {
+        div_email.innerHTML = '';
+      }
+
+      if (tamanho_senha < 8) {
+        div_senha.innerHTML = `A senha deve ter no mínimo 8 caracteres`;
+        cadastro = false;
+      } else if (!caracter_senha) {
+        div_senha.innerHTML = `A senha precisa conter um dos caracteres especiais: '!', '#' ou '%'`;
+        cadastro = false;
+      } else {
+        div_senha.innerHTML = '';
+      }
+
+      if (confirmacaoSenhaVar !== senhaVar) {
+        div_senha_confirme.innerHTML = `As senhas não coincidem`;
+        cadastro = false;
+      } else {
+        div_senha_confirme.innerHTML = '';
+      }
+
+      if (peixesVar === "Selecione o seu peixe favorito") {
+        div_peixes.innerHTML = 'Selecione o seu peixe favorito';
+        cadastro = false;
+      } else {
+        div_peixes.innerHTML = '';
+      }
+
+      if (!cadastro) {
+        return false;
+      }
+
+      fetch("/usuarios/cadastrar", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            nomeServer: nomeVar,
+            emailServer: emailVar,
+            senhaServer: senhaVar,
+            peixesServer: peixesVar,
+          }),
+        })
+        .then(function(resposta) {
+          console.log("resposta: ", resposta);
+
+          if (resposta.ok) {
+            cardErro.style.display = "block";
+            mensagem_erro.innerHTML = "Cadastro realizado com sucesso! Redirecionando para tela de Login...";
+
+            setTimeout(() => {
+              window.location = "login.html";
+            }, 2000);
+
+            limparFormulario();
+          } else {
+            throw "Houve um erro ao tentar realizar o cadastro!";
+          }
+        })
+        .catch(function(resposta) {
+          console.log(`#ERRO: ${resposta}`);
+        });
+
+      return false;
+    }
+
+    function listar() {
+      fetch("/peixes/listar", {
+          method: "GET",
+        })
+        .then(function(resposta) {
+          return resposta.json();
+        })
+        .then(function(peixes) {
+          var listapeixes = document.getElementById('listapeixes');
+          peixes.forEach((peixe) => {
+            listapeixes.innerHTML += `<option value='${peixe.idPeixe}'>${peixe.nome}</option>`;
+          });
+        })
+        .catch(function(erro) {
+          console.log(`#ERRO: ${erro}`);
+        });
+    }
+
+    function limparFormulario() {
+      nome_input.value = '';
+      email_input.value = '';
+      senha_input.value = '';
+      confirmacao_senha_input.value = '';
+      listapeixes.selectedIndex = 0;
+    }
+
+    function sumirMensagem() {
+      cardErro.style.display = "none";
+    }
+  </script>
 </body>
 
 </html>
-<script>
-   function cadastrar() {
-    
-
-    //Recupere o valor da nova input pelo nome do id
-    // Agora vá para o método fetch logo abaixo
-    var nomeVar = nome_input.value;
-    var emailVar = email_input.value;
-    var senhaVar = senha_input.value;
-    var confirmacaoSenhaVar = confirmacao_senha_input.value;
-    var fkPeixesVar =listarpeixes.value
-   
-   
-    if (
-      nomeVar == "" ||
-      emailVar == "" ||
-      senhaVar == "" ||
-      confirmacaoSenhaVar == "" 
-    ) {
-      cardErro.style.display = "block";
-      mensagem_erro.innerHTML =
-        "(Mensagem de erro para todos os campos em branco)";
-
-      return false;
-    } else {
-      setInterval(sumirMensagem, 5000);
-    }
-
-    // Enviando o valor da nova input
-    fetch("/usuarios/cadastrar", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        // crie um atributo que recebe o valor recuperado aqui
-        // Agora vá para o arquivo routes/usuario.js
-        nomeServer: nomeVar,
-        emailServer: emailVar,
-        senhaServer: senhaVar,
-        fkPeixesServer:fkPeixesVar
-      }),
-    })
-      .then(function (resposta) {
-        console.log("resposta: ", resposta);
-
-        if (resposta.ok) {
-          cardErro.style.display = "block";
-
-          mensagem_erro.innerHTML =
-            "Cadastro realizado com sucesso! Redirecionando para tela de Login...";
-
-          setTimeout(() => {
-            window.location = "login.html";
-          }, "2000");
-
-          limparFormulario();
-        } else {
-          throw "Houve um erro ao tentar realizar o cadastro!";
-        }
-      })
-      .catch(function (resposta) {
-        console.log(`#ERRO: ${resposta}`);
-      });
-
-    return false;
-  }
-
-  function sumirMensagem() {
-    cardErro.style.display = "none";
-  }
-</script>

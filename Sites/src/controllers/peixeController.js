@@ -1,32 +1,16 @@
 var peixeModel = require("../models/peixeModel");
 
-function listarpeixes(req, res) {
-    peixeModel.listarpeixes()
-        .then(function(resultado){
-            res.status(200).json(resultado);
-        })
-        .catch(function(erro){
-            res.status(500).json({ error: "Erro ao listar peixes", message: erro.message });
-        });
-}
-
-function cadastrar(req, res) {
-    var nome = req.body.nome;
-
-    if (!nome) {
-        return res.status(400).json({ error: "Nome não fornecido" });
-    }
-
-    peixeModel.cadastrar(nome)
-        .then(function(){
-            res.status(200).json({ message: "Peixe cadastrado com sucesso" });
-        })
-        .catch(function(erro){
-            res.status(500).json({ error: "Erro ao cadastrar peixe", message: erro.message });
-        });
+function listar(req, res) {
+  peixeModel.listar()
+    .then((resultado) => {
+      res.status(200).json(resultado);
+    })
+    .catch((erro) => {
+      console.error(erro);
+      res.status(500).json({ mensagem: "Erro ao listar peixes" });
+    });
 }
 
 module.exports = {
-    listarpeixes,
-    cadastrar
+  listar
 };
