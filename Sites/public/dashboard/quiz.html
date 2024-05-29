@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="pt">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quiz sobre Pescaria</title>
+</head>
+
+<body>
+    <div id="quiz" class="quiz">
+        <div id="inicio">
+            <h1>Quiz sobre Conhecimentos gerais de pescaria</h1>
+            <button onclick="iniciar()">Iniciar Quiz</button>
+            <div class="pontuacao" id="pontuacao"></div>
+        </div>
+        <div>
+            <div class="pergunta" id="pergunta"></div>
+            <div class="opcoes">
+                <button class="opcoes" id="opcao1" onclick="analisar(0)"></button>
+                <button class="opcoes" id="opcao2" onclick="analisar(1)"></button>
+                <button class="opcoes" id="opcao3" onclick="analisar(2)"></button>
+                <button class="opcoes" id="opcao4" onclick="analisar(3)"></button>
+            </div>
+        </div>
+        <div class="finalizacao" id="finalizacao"></div>
+        <div id="resposta"></div>
+    </div>
+
+    <script>
+        var perguntasQuiz = [
+            {
+                perguntas: "Qual é o melhor horário do dia para pescar?",
+                opcoes: ["Manhã cedo", "Meio-dia", "Tarde", "Noite"],
+                respostas: '1',
+            },
+            {
+                perguntas: "Qual desses peixes é conhecido por ser difícil de pegar?",
+                opcoes: ["Tilápia", "Tucunaré", "Carpa", "Sardinha"],
+                respostas: '2',
+            },
+            {
+                perguntas: "O que é um 'leader' na pesca?",
+                opcoes: ["Uma isca especial", "Um acessório usado na linha", "Um tipo de peixe", "Uma técnica de pesca"],
+                respostas: '2',
+            },
+            {
+                perguntas: "Qual dos seguintes equipamentos é usado para armazenar peixes vivos?",
+                opcoes: ["Carretilha", "Caixa térmica", "Viveiro", "Anzol"],
+                respostas: '3',
+            },
+            {
+                perguntas: "Qual é o nome da técnica de pesca que utiliza uma rede jogada manualmente?",
+                opcoes: ["Pesca com isca artificial", "Pesca de arrasto", "Pesca de fly", "Pesca com tarrafa"],
+                respostas: '4',
+            },
+            {
+                perguntas: "Qual desses peixes é mais comum em águas doces?",
+                opcoes: ["Salmão", "Bacalhau", "Tilápia", "Atum"],
+                respostas: '3',
+            },
+            {
+                perguntas: "Qual equipamento é usado para medir a profundidade da água?",
+                opcoes: ["Barômetro", "Sonar", "Anemômetro", "GPS"],
+                respostas: '2',
+            },
+            {
+                perguntas: "O que é um anzol circular?",
+                opcoes: ["Um tipo de anzol com ponta dobrada", "Um anzol usado para pesca em alto mar", "Um anzol usado exclusivamente para peixes pequenos", "Um anzol usado para pesca com isca viva"],
+                respostas: '1',
+            },
+            {
+                perguntas: "Qual é a principal função da chumbada na pesca?",
+                opcoes: ["Atrair peixes", "Segurar a isca", "Manter a linha no fundo da água", "Ajudar na flutuação"],
+                respostas: '3',
+
+            },
+            {
+                perguntas: "Qual destes é um método de pesca sustentável?",
+                opcoes: ["Pesca de arrasto", "Pesca com redes de emalhar", "Pesca com anzol e linha", "Pesca com dinamite"],
+                respostas: '3',
+
+            }
+        ];
+
+        var pontuacao = 0;
+        var perguntaAtual = 0;
+
+        function embaralharPerguntas() {
+            for (var index = perguntasQuiz.length - 1; index > 0; index--) {
+                var aleatorio = Math.floor(Math.random() * (index + 1));
+                var agora = perguntasQuiz[index];
+                perguntasQuiz[index] = perguntasQuiz[aleatorio];
+                perguntasQuiz[aleatorio] = agora;
+            }
+        }
+
+        function iniciar() {
+            embaralharPerguntas();
+            inicio.style.display = "none";
+            quiz.style.display = "block";
+            mostrarPergunta();
+        }
+
+        function mostrarPergunta() {
+            if (perguntaAtual < perguntasQuiz.length) {
+                pergunta.innerHTML = perguntasQuiz[perguntaAtual].perguntas;
+                opcao1.innerHTML = perguntasQuiz[perguntaAtual].opcoes[0];
+                opcao2.innerHTML = perguntasQuiz[perguntaAtual].opcoes[1];
+                opcao3.innerHTML = perguntasQuiz[perguntaAtual].opcoes[2];
+                opcao4.innerHTML = perguntasQuiz[perguntaAtual].opcoes[3];
+                resposta.innerHTML = '';
+            } else {
+                finalizarQuiz();
+            }
+        }
+
+        function analisar(selected) {
+            var respostaCerta = perguntasQuiz[perguntaAtual].respostas;
+            if (selected == respostaCerta -1) {
+                pontuacao++;
+                resposta.innerHTML = "SUA RESPOSTA ESTÁ CORRETA";
+            } else {
+                resposta.innerHTML = "SUA RESPOSTA ESTÁ ERRADA";
+            }
+            setTimeout(() => {
+                perguntaAtual++;
+                mostrarPergunta();
+            }, 1000);
+        }
+
+        function finalizarQuiz() {
+            finalizacao.innerHTML = "VOCE ACERTOU " + pontuacao + " DE " + perguntasQuiz.length + " QUESTÕES";
+            quiz.style.display = "none";
+        }
+
+
+    </script>
+</body>
+
+</html>

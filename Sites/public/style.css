@@ -105,7 +105,7 @@ body {
 }
 
 .card_descricao {
-    background-color: rgb(255, 255, 255);
+
     display: flex;
     justify-content: center;
     align-items: center;
@@ -113,9 +113,8 @@ body {
     height: 30 0px;
     border-radius: 4px;
     margin-top: 15px;
-    box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.403);
-    color: rgb(0, 0, 0);
-    font-size: 15px;
+    color: rgb(255, 255, 255);
+    font-size: 17px;
 
 
 
