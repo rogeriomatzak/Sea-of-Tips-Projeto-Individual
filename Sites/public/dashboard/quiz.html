@@ -14,9 +14,10 @@
             <button onclick="iniciar()">Iniciar Quiz</button>
             <div class="pontuacao" id="pontuacao"></div>
         </div>
+        
         <div>
-            <div class="pergunta" id="pergunta"></div>
-            <div class="opcoes">
+            <div class="pergunta" id="pergunta" style="display: none;"></div>
+            <div id="opcoes"   class="opcoes" style="display: none;">
                 <button class="opcoes" id="opcao1" onclick="analisar(0)"></button>
                 <button class="opcoes" id="opcao2" onclick="analisar(1)"></button>
                 <button class="opcoes" id="opcao3" onclick="analisar(2)"></button>
@@ -28,6 +29,9 @@
     </div>
 
     <script>
+
+        var idQuiz=1
+        
         var perguntasQuiz = [
             {
                 perguntas: "Qual é o melhor horário do dia para pescar?",
@@ -99,6 +103,9 @@
             embaralharPerguntas();
             inicio.style.display = "none";
             quiz.style.display = "block";
+            opcoes.style.display = 'block'
+            pergunta.style.display = 'block'
+
             mostrarPergunta();
         }
 
@@ -110,6 +117,7 @@
                 opcao3.innerHTML = perguntasQuiz[perguntaAtual].opcoes[2];
                 opcao4.innerHTML = perguntasQuiz[perguntaAtual].opcoes[3];
                 resposta.innerHTML = '';
+                
             } else {
                 finalizarQuiz();
             }
@@ -131,7 +139,10 @@
 
         function finalizarQuiz() {
             finalizacao.innerHTML = "VOCE ACERTOU " + pontuacao + " DE " + perguntasQuiz.length + " QUESTÕES";
-            quiz.style.display = "none";
+            pergunta.style.display ="none"
+            opcoes.style.display = "none"
+            resposta.style.display = "none";
+
         }
 
 
