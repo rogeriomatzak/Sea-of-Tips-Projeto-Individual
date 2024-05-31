@@ -2,31 +2,16 @@
 <html lang="pt-br">
 
 <head>
-    <link rel="shortcut icon" href="../assets/icon/favicon2.ico" type="image/x-icon">
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sea-Of-Types | Quiz</title>
 
-
-    <link rel="stylesheet" href="./../css/dashboards.css">
-    <link rel="stylesheet" href="./../css/estilo.css" />
-
-    <script src="../js/sessao.js"></script>
-    <script src="../js/alerta.js"></script>
-    <link rel="preconnect" href="https://fonts.gstatic.com">
-    <link
-        href="https://fonts.googleapis.com/css2?family=Exo+2:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
-        rel="stylesheet">
 </head>
 
-<body onload="validarSessao(), exibirAquarios(),  atualizacaoPeriodica()">
+<body>
 
     <div class="janela">
 
         <div class="header-left dash-header">
 
-          <img src="Logo.png" alt="">
+            <img src="Logo.png" alt="">
 
             <div class="hello">
                 <h3>Olá, <span id="b_usuario">usuário</span>!</h3>
@@ -54,22 +39,206 @@
 
         </div>
 
-       
+        <body>
+            <div id="quiz" class="quiz">
+                <div id="inicio">
+                    <h1>Quiz sobre Conhecimentos gerais de pescaria</h1>
+                    <button onclick="iniciar()">Iniciar Quiz</button>
+                    <div class="pontuacao" id="pontuacao"></div>
+                </div>
 
-            <div class="cards" id="cardAquarios">
-
+                <div>
+                    <div class="pergunta" id="pergunta" style="display: none;"></div>
+                    <div id="opcoes" class="opcoes" style="display: none;">
+                        <button class="opcoes" id="opcao1" onclick="analisar(0)"></button>
+                        <button class="opcoes" id="opcao2" onclick="analisar(1)"></button>
+                        <button class="opcoes" id="opcao3" onclick="analisar(2)"></button>
+                        <button class="opcoes" id="opcao4" onclick="analisar(3)"></button>
+                    </div>
+                </div>
+                <div class="finalizacao" id="finalizacao"></div>
+                <div id="resposta"></div>
+                <button onclick="mensagem()">Finalizar Quiz</button>
             </div>
-
-        </div>
-
-    </div>
-
-</body>
-
-<script>
+            <div id="banco"></div>
+        </body>
+        <script>
 
 
 
-</script>
+            var perguntasQuiz = [
+                {
+                    perguntas: "Qual é o melhor horário do dia para pescar?",
+                    opcoes: ["Manhã cedo", "Meio-dia", "Tarde", "Noite"],
+                    respostas: '1',
+                },
+                {
+                    perguntas: "Qual desses peixes é conhecido por ser difícil de pegar?",
+                    opcoes: ["Tilápia", "Tucunaré", "Carpa", "Sardinha"],
+                    respostas: '2',
+                },
+                {
+                    perguntas: "O que é um 'leader' na pesca?",
+                    opcoes: ["Uma isca especial", "Um acessório usado na linha", "Um tipo de peixe", "Uma técnica de pesca"],
+                    respostas: '2',
+                },
+                {
+                    perguntas: "Qual dos seguintes equipamentos é usado para armazenar peixes vivos?",
+                    opcoes: ["Carretilha", "Caixa térmica", "Viveiro", "Anzol"],
+                    respostas: '3',
+                },
+                {
+                    perguntas: "Qual é o nome da técnica de pesca que utiliza uma rede jogada manualmente?",
+                    opcoes: ["Pesca com isca artificial", "Pesca de arrasto", "Pesca de fly", "Pesca com tarrafa"],
+                    respostas: '4',
+                },
+                {
+                    perguntas: "Qual desses peixes é mais comum em águas doces?",
+                    opcoes: ["Salmão", "Bacalhau", "Tilápia", "Atum"],
+                    respostas: '3',
+                },
+                {
+                    perguntas: "Qual equipamento é usado para medir a profundidade da água?",
+                    opcoes: ["Barômetro", "Sonar", "Anemômetro", "GPS"],
+                    respostas: '2',
+                },
+                {
+                    perguntas: "O que é um anzol circular?",
+                    opcoes: ["Um tipo de anzol com ponta dobrada", "Um anzol usado para pesca em alto mar", "Um anzol usado exclusivamente para peixes pequenos", "Um anzol usado para pesca com isca viva"],
+                    respostas: '1',
+                },
+                {
+                    perguntas: "Qual é a principal função da chumbada na pesca?",
+                    opcoes: ["Atrair peixes", "Segurar a isca", "Manter a linha no fundo da água", "Ajudar na flutuação"],
+                    respostas: '3',
+
+                },
+                {
+                    perguntas: "Qual destes é um método de pesca sustentável?",
+                    opcoes: ["Pesca de arrasto", "Pesca com redes de emalhar", "Pesca com anzol e linha", "Pesca com dinamite"],
+                    respostas: '3',
+
+                }
+            ];
+
+            var perguntaAtual = 0;
+            var pontuacao = 0;
+            var pontuacaodashboard =0;
+
+            const b_usuario = document.getElementById('b_usuario');
+            if (sessionStorage.NOME_USUARIO) {
+                b_usuario.innerHTML = sessionStorage.NOME_USUARIO;
+            } else {
+                b_usuario.innerHTML = 'usuário';
+            }
+            function obterIdUsuario() {
+                return sessionStorage.ID_USUARIO || 'desconhecido';
+            }
+            function embaralharPerguntas() {
+                for (var index = perguntasQuiz.length - 1; index > 0; index--) {
+                    var aleatorio = Math.floor(Math.random() * (index + 1));
+                    var agora = perguntasQuiz[index];
+                    perguntasQuiz[index] = perguntasQuiz[aleatorio];
+                    perguntasQuiz[aleatorio] = agora;
+                }
+            }
+
+            function iniciar() {
+                embaralharPerguntas();
+                inicio.style.display = "none";
+                quiz.style.display = "block";
+                opcoes.style.display = 'block'
+                pergunta.style.display = 'block'
+
+                mostrarPergunta();
+            }
+
+            function mostrarPergunta() {
+                if (perguntaAtual < perguntasQuiz.length) {
+                    pergunta.innerHTML = perguntasQuiz[perguntaAtual].perguntas;
+                    opcao1.innerHTML = perguntasQuiz[perguntaAtual].opcoes[0];
+                    opcao2.innerHTML = perguntasQuiz[perguntaAtual].opcoes[1];
+                    opcao3.innerHTML = perguntasQuiz[perguntaAtual].opcoes[2];
+                    opcao4.innerHTML = perguntasQuiz[perguntaAtual].opcoes[3];
+                    resposta.innerHTML = '';
+
+                } else {
+                    finalizarQuiz();
+                }
+            }
+            function analisar(opcaoEscolhida) {
+                var respostaCerta = perguntasQuiz[perguntaAtual ].respostas;
+                if (opcaoEscolhida == respostaCerta -1) {
+                    pontuacao++;
+                    resposta.innerHTML = "SUA RESPOSTA ESTÁ CORRETA";
+                } else {
+                    resposta.innerHTML = "SUA RESPOSTA ESTÁ ERRADA";
+                }
+                setTimeout(() => {
+                    perguntaAtual++;
+                    mostrarPergunta();
+                }, 2000);
+            }
+
+
+            function finalizarQuiz() {
+                const nomeUsuario = sessionStorage.NOME_USUARIO || 'usuário';
+                finalizacao.innerHTML = `VOCÊ ACERTOU ${pontuacao} DE ${perguntasQuiz.length} QUESTÕES`;
+                pergunta.style.display = "none";
+                opcoes.style.display = "none";
+                resposta.style.display = "none";
+            }
+
+            function limparSessao() {
+                sessionStorage.clear();
+                window.location.href = './dashboard.html';
+            }
+
+            function mensagem() {
+                var pontuacaoVar = pontuacao;
+                window.location.href = `./cards.html`
+                fetch("/quiz/mensagem", {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json",
+                    },
+                    body: JSON.stringify({
+                        pontuacaoServer: pontuacaoVar,
+                        idUsuarioServer: sessionStorage.ID_USUARIO,
+                    }),
+                })
+            }
+             
+        var timeout = setTimeout(function SelectQuiz() {
+        fetch("/quiz/SelectQuiz", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({
+                idUsuarioServer: sessionStorage.ID_USUARIO
+            })
+        }).then(function (resposta) {
+            console.log("ESTOU NO THEN DO entrar()!")
+            if (resposta.ok) {
+                console.log(resposta);
+
+                resposta.json().then(json => {
+                    console.log(json);
+                    console.log(JSON.stringify(json));
+                    console.log(json.resultadoChamar_Quiz[0])
+
+                    var resultado = json.resultadoChamar_Quiz[0];
+                    var pontuacaoMetrica = resultado.pontuacao;
+
+                    pontuacaodashboard = pontuacaoMetrica;
+                })
+            }
+        })
+    }, 200)
+
+    
+        </script>
+
 
 </html>

@@ -19,7 +19,7 @@ function autenticar(req, res) {
                 if (resultadoAutenticar.length == 1) {
                     const usuario = resultadoAutenticar[0];
                     res.json({
-                        id: usuario.idUsuario,
+                        idUsuario: usuario.idUsuario,
                         email: usuario.email,
                         nome: usuario.nome,
                         senha: usuario.senha

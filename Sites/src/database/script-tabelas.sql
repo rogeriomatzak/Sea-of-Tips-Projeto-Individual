@@ -24,7 +24,7 @@ select *from peixes;
 
 
 create table usuario(
-id int primary key auto_increment,
+idUsuario int primary key auto_increment,
 nome varchar (45),
 email varchar (45),
 senha varchar (45),
@@ -33,18 +33,14 @@ foreign key (fkPeixe) references peixes (idPeixe));
 
 select *from usuario;
 	
-
-
 create table quiz(
-idQuiz int primary key auto_increment);
-
-create table tentativa(
 idTentativa int primary key auto_increment,
 fkUsuario int,
-fkQuiz int,
 horario timestamp default current_timestamp,
-qtd_pontos char(3),
-constraint foreign key (fkQuiz) references  quiz (idQuiz),
+pontuacao int,
 constraint foreign key (fkUsuario) references usuario(id));
 
 
+SELECT nome, pontuacao 
+FROM usuario 
+JOIN quiz ON idUsuario = fkUsuario;
