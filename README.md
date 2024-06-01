@@ -1,4 +1,5 @@
-<img src="https://user-images.githubusercontent.com/46379117/192358781-9ca879e4-e55e-4d0d-b876-f9a4a2ed9ae8.png" width="600px">
+![OIG3 Qjd060Ln0Xk_lJRcEr](https://github.com/rogeriomatzak/Sea-of-Tips-Projeto-Individual/assets/160244406/a46725bb-c444-4a06-9993-e9e07fbcc1a9)<img src="![OIG3 Qjd060Ln0Xk_lJRcEr](https://github.com/rogeriomatzak/Sea-of-Tips-Projeto-Individual/assets/160244406/28503e86-b2b3-4efe-b7fc-5040f7bbffc2)
+" width="600px">
 
 _Web Data Visualization = Visualização de Dados na Web_
 
