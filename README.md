@@ -1,5 +1,5 @@
-![OIG3 Qjd060Ln0Xk_lJRcEr](https://github.com/rogeriomatzak/Sea-of-Tips-Projeto-Individual/assets/160244406/a46725bb-c444-4a06-9993-e9e07fbcc1a9)<img src="![OIG3 Qjd060Ln0Xk_lJRcEr](https://github.com/rogeriomatzak/Sea-of-Tips-Projeto-Individual/assets/160244406/28503e86-b2b3-4efe-b7fc-5040f7bbffc2)
-" width="20px">
+<img src="![Design sem nome (2)](https://github.com/rogeriomatzak/Sea-of-Tips-Projeto-Individual/assets/160244406/470951c4-2329-444a-85eb-f06ab6ee4847)" width="600px">
+
 
 _Web Data Visualization = Visualização de Dados na Web_
 
