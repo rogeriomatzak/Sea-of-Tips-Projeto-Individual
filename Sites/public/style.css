@@ -164,6 +164,7 @@ body {
 }
 
 .footer {
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
     margin-top: 30px;
     height: auto;
     background-color: rgb(25, 56, 70);
@@ -180,84 +181,104 @@ body {
     font-size: 15px;
 
 }
-
+/* Container principal para o login */
 .login {
     display: flex;
     justify-content: center;
+    align-items: center;
     background-size: cover;
     background-position: center;
-    align-items: center;
-
 }
 
+/* Container de login com altura ajustada e margem */
 .login .container {
+    display: flex;
     justify-content: center;
-    background-size: cover;
-    height: 75vh;
     align-items: center;
+    height: 75vh;
     margin: 30px;
-
+    background-size: cover;
 }
 
+/* Banner de login e cadastro */
 .banner_login_cadastro {
-    background-image: url(Imagens/LoginECadastro.jpg);
+    background-image: url('Imagens/LoginECadastro.jpg');
     background-size: cover;
     background-attachment: fixed;
     background-repeat: no-repeat;
     height: 89.4vh;
 }
 
+/* Estilo para títulos dentro do banner */
 .banner_login_cadastro h3 {
     font-size: 15px;
     font-family: monospace;
     margin: 5px;
 }
 
+/* Links dentro do banner */
 .banner_login_cadastro a {
     text-decoration: none;
     color: black;
-    font-size: bold;
+    font-weight: bold;
 }
 
 .card {
     background-color: white;
     display: flex;
     flex-direction: column;
+    justify-content: center;
+    align-items: center;
     height: 300px;
     width: 300px;
     border-radius: 10px;
-    border: 3px solid;
-
+    border: 3px solid #ccc;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
+
 
 .resposta {
     text-align: center;
     font-size: 15px;
-    text-shadow: 0px 0px 3px rgb(0, 0, 0);
     color: rgb(247, 0, 0);
-    margin: 5px 0px 5px 0px;
+    margin: 5px 0;
     font-family: Verdana, Geneva, Tahoma, sans-serif;
+    text-shadow: 0 0 3px rgb(0, 0, 0);
 }
+
 
 .campo {
+    margin-top: 5px;
     display: flex;
     flex-direction: column;
     align-items: center;
 }
 
+/* Inputs dentro do campo */
 .campo input {
     width: 200px;
-    padding: 7px 15px;
+    padding: 10px 15px;
     border: 2px solid rgb(25, 56, 70);
-
+    border-radius: 5px;
+    margin-bottom: 10px;
 }
 
-.formulario {
-    margin: 0px;
 
+.formulario {
+    margin-top: 5px;
     display: flex;
     flex-direction: column;
     align-items: center;
+    color: white;
+    width: 100%;
+    max-width: 400px;
+    margin: 0;
+}
+
+
+.formulario h2 {
+    margin-top: 5px;
+    margin-top: 20px;
     color: white;
 }
 
@@ -267,89 +288,95 @@ body {
     cursor: alias;
 }
 
-
 .caixa_formulario_cadastro {
-    background-color: rgba(32, 68, 84, 0.5);
+    background-color: rgba(13, 29, 44, 0.7);
     width: 400px;
     height: 550px;
-    color: black;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     border-radius: 4px;
-    box-shadow: 0px 0px 20px solid black;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+    color: white;
     font-family: Pesca;
+    padding: 20px;
+}
+
+.caixa_formulario_cadastro h2 {
+    
+    margin: 8px;
 }
 
 .caixa_formulario_cadastro h3 {
-    margin: 20px;
-    color: white;
     font-family: Pesca;
+    margin: 20px 0;
 }
+
 
 .caixa_formulario_cadastro a {
     color: white;
-
+    text-decoration: none;
 }
 
+
 .caixa_formulario_login {
-    background-color: rgba(32, 68, 84, 0.5);
+    background-color:  rgba(13, 29, 44, 0.7);
     width: 400px;
-    height: 375px;
-    color: black;
+    height: 400px;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     border-radius: 4px;
-    font-family: Pesca;
+    color: white;
+    font-family: Pesca, sans-serif;
+    padding: 20px;
 }
 
-.caixa_formulario h1 {
-    font-size: 20px;
-}
-
-.formulario {
-    display: flex;
-    flex-direction: column;
-    width: 200px;
-    height: 200px;
-}
-
-.formulario {
-    display: flex;
-    flex-direction: column;
-    width: 400px;
-    height: 200px;
-}
 
 button {
-    margin-top: 10px;
+    margin: 10px 0;
     background: #144a63;
-    color: #fff;
+    color: white;
     padding: 10px 15px;
     border: none;
-    border-radius: 10px;
-    font-size: 20px;
-    width: 180px;
-    align-self: center;
+    border-radius: 5px;
+    font-size: 16px;
     cursor: pointer;
-    margin: 10px;
+    transition: background 0.3s ease;
 }
 
-input {
-    padding: 10px 15px;
-    text-align: center;
-    border: 2px solid rgb(0, 0, 0);
-    border-radius: 10px;
-    width: 200px;
-    padding: 7px 15px;
+button:hover {
+    background: #0f3a4d;
 }
+
+
+input {
+    width: 230px;
+    padding: 10px 15px;
+    border: 2px solid #ccc;
+    border-radius: 5px;
+    margin-bottom: px;
+    text-align: center;
+}
+
+.listapeixes{
+
+    width: 270px;
+    padding: 10px 15px;
+    border: 2px solid #ccc;
+    border-radius: 5px;
+    margin-bottom: px;
+    text-align: center;
+
+}
+
 
 span {
     font-size: 15px;
 }
+
 
 .agora {
     font-size: 30px;
@@ -596,7 +623,8 @@ a {
     width: 400px;
     height: 360px;
     border-radius: 3%;
-    transition: 1s ease;
+    transition: transform 0.8s;
+    transform-style: preserve-3d;
     background-image: url(Imagens/varamusky.webp);
     background-size: cover;
     background-repeat: no-repeat;

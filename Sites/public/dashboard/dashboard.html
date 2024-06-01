@@ -2,14 +2,13 @@
 <html lang="pt-br">
 
 <head>
-    <link rel="shortcut icon" href="../assets/icon/favicon2.ico" type="image/x-icon">
+    <link rel="shortcut icon" href="Logo.png" type="image/x-icon">
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dashboards</title>
+    <title>Gráficos | SeaOfTypes</title>
 
-    <link rel="stylesheet" href="./../css/dashboards.css">
-    <link rel="stylesheet" href="./../css/estilo.css" />
+    <link rel="stylesheet" href="dashboards.css">
     <script src="../js/sessao.js"></script>
     <!-- <script src="./../js/alerta.js"></script> -->
 
@@ -27,9 +26,9 @@
 
 <body onload="buscarUltimoQuiz()">
 
-    <div class="janela">
+    <div>
         <div class="header-left">
-            <h1>Praias Paradisíacas BR</h1>
+            <img src="logo.png" alt="Logo">
 
             <div class="hello">
                 <h3>Olá, <span id="b_usuario">usuário</span>!</h3>
@@ -37,7 +36,7 @@
 
             <div class="btn-nav-white">
                 <a href="./cards.html">
-                    <h3>Aquários</h3>
+                    <h3>Quiz</h3>
                 </a>
             </div>
 
@@ -74,14 +73,14 @@
     function exibirQuizDosUsuarios() {
         document.getElementById("graficos").innerHTML += `
         <div id="grafico">
-            <h3 class="tituloGraficos">
-                <span id="tituloGrafico">Nossa Comunidade</span>
-            </h3>
+            <h2 class="tituloGraficos">
+                <span id="tituloGrafico">Gráfico de Tentativas</span>
+            </h2>
             <div class="graph">
                 <canvas id="myChartCanvas"></canvas>
             </div>
             <div class="label-captura">
-                <p id="avisoCaptura" style="color: white">Teste</p>
+                <p id="avisoCaptura"></p>
             </div>
         </div>
     `;
@@ -116,18 +115,18 @@
         let data = [];
 
         resposta.forEach((quiz, index) => {
-            labels.push(`Quiz ${index + 1}`);
+            labels.push(`Tentativa ${index + 1}`);
             data.push(quiz.pontuacao);
         });
 
         let dados = {
             labels: labels,
             datasets: [{
-                label: 'Pontuação dos Quizzes',
+                label: 'Pontuação de Cada Tentativa',
                 data: data,
-                backgroundColor: 'rgba(0, 123, 255, 0.5)',
-                borderColor: 'rgba(0, 123, 255, 1)',
-                borderWidth: 1,
+                backgroundColor: 'rgb(70,130,180)',
+                borderColor: 'rgb(70,130,180)',
+                borderWidth: 2,
                 fill: false
             }]
         };
@@ -138,10 +137,16 @@
             options: {
                 scales: {
                     x: {
-                        beginAtZero: true
+                        beginAtZero: true,
+                        ticks: {
+                            color: 'white'
+                        }
                     },
                     y: {
-                        beginAtZero: true
+                        beginAtZero: true,
+                        ticks: {
+                            color: 'white'
+                        }
                     }
                 }
             }

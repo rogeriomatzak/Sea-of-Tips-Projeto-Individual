@@ -38,9 +38,12 @@ idTentativa int primary key auto_increment,
 fkUsuario int,
 horario timestamp default current_timestamp,
 pontuacao int,
-constraint foreign key (fkUsuario) references usuario(id));
+constraint foreign key (fkUsuario) references usuario(idUsuario));
+
+select *from quiz;
+select pontuacao from quiz order by horario desc;
 
 
-SELECT nome, pontuacao 
-FROM usuario 
-JOIN quiz ON idUsuario = fkUsuario;
+
+
+
