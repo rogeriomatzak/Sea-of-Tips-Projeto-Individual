@@ -14,8 +14,18 @@ body {
 .header-left a {
   text-decoration: none;
   color: white;
+  margin: 0 10px;
+  display: flex;
+  align-items: center;
 }
 
+.header-left a .icon {
+  margin-right: 5px;
+}
+
+.header-left .hello {
+  margin-right: auto;
+}
 .header-left {
   position: fixed;
   top: 0;
@@ -28,6 +38,10 @@ body {
   align-items: center;
   border-right: 2px solid #000000;
   background-color: rgb(25, 56, 70);
+ 
+}
+.header-left a:hover {
+  color:black
 }
 
 .hello h3 {
@@ -293,15 +307,29 @@ canvas {
   border-radius: 5px;
   text-align: center;
   padding: 2% 5%;
+  width: 130px;
+  height: 25px;
+  align-items: center;
+  justify-content: center;
+  display: flex;
+}
+
+.fas fa-home {
+  padding: 2px;
 }
 
 .btn-nav-white {
   width: 40%;
-  background-color: white;
-  border: 3px solid #144a63;
+  background-color: #144a63;
+  border: 3px solid white;
   border-radius: 5px;
   text-align: center;
   padding: 2% 5%;
+  width: 130px;
+  height: 25px;
+  align-items: center;
+  justify-content: center;
+  display: flex;
 }
 
 .btn-nav-white h3 {
@@ -329,11 +357,14 @@ canvas {
   cursor: pointer;
 }
 
+.icon {
+  width: 30px;
+}
 
 h1 {
   margin-top: 150px;
   justify-content: center;
- margin-left: 250px;
+  margin-left: 250px;
   color: white;
   font-size: 35px;
   font-family: Verdana, Geneva, Tahoma, sans-serif;
@@ -345,14 +376,16 @@ h1 {
   padding: 2%;
   display: flex;
   flex-direction: column;
-  width: 45%; /* Ajustar conforme necessário */
+  width: 45%;
+  /* Ajustar conforme necessário */
   height: fit-content;
   border-radius: 4px;
   color: rgb(0, 0, 0);
   font-family: Verdana, Geneva, Tahoma, sans-serif;
   font-size: 22px;
   justify-content: space-between;
-  box-sizing: border-box; /* Para garantir que o padding seja incluído na largura total */
+  box-sizing: border-box;
+  /* Para garantir que o padding seja incluído na largura total */
 }
 
 .social {
@@ -362,15 +395,26 @@ h1 {
   justify-content: space-between;
   background-color: rgb(36, 60, 70);
   padding: 40px 30px;
-  width: calc(100% - 460px); 
+  width: calc(100% - 460px);
   box-sizing: border-box;
 }
+
 .titulo{
-margin: 0px;
-display: flex;
-align-items: center;
-font-size: 65px;
-flex-direction: column;
-color: white;
-font-family: Pesca;
+  margin: 0px;
+  display: flex;
+  align-items: center;
+  font-size: 65px;
+  flex-direction: column;
+  color: white;
+  margin-left: 120px;
+
+}
+.titulo_2{
+  margin: 0px;
+  display: flex;
+  align-items: center;
+  font-size: 65px;
+  flex-direction: column;
+  color: white;
+  margin-left: 200px;
 }
