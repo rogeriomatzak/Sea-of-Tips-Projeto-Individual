@@ -41,7 +41,8 @@ pontuacao int,
 constraint foreign key (fkUsuario) references usuario(idUsuario));
 
 select *from quiz;
-SELECT pontuacao FROM quiz  WHERE fkUsuario = idUsuario order by horario;
+SELECT pontuacao FROM quiz  join usuario on fkUsuario = idUsuario order by horario;
+
 
 
 
