@@ -1,13 +1,11 @@
 var quizModel = require("../models/quizModel");
 
 function mensagem(req, res) {
-  // Crie uma variável que vá recuperar os valores do arquivo cadastro.html
   var idUsuario = req.body.idUsuarioServer;
   var pontuacao = req.body.pontuacaoServer;
 
 
 
-    // Passe os valores como parâmetro e vá para o arquivo usuarioModel.js
     quizModel.mensagem(idUsuario,pontuacao)
       .then(function (resultado) {
         res.json(resultado);
@@ -39,8 +37,9 @@ function SelectQuiz(req,res){
 }
 function buscarQuiz(req, res) {
   const limite_linhas = 1;
+  var idUsuario = req.body.idUsuarioServer;
 
-  quizModel.buscarQuiz(limite_linhas).then(function (resultado) {
+  quizModel.buscarQuiz(idUsuario).then(function (resultado) {
       if (resultado.length > 0) {
           res.status(200).json(resultado);
       } else {
@@ -53,8 +52,9 @@ function buscarQuiz(req, res) {
   });
 }
 function buscarUltimoQuiz(req, res) {
+  var idUsuario = req.body.idUsuarioServer;
 
-  quizModel.buscarUltimoQuiz().then(function (resultado) {
+  quizModel.buscarUltimoQuiz(idUsuario).then(function (resultado) {
       if (resultado.length > 0) {
           res.status(200).json(resultado);
       } else {

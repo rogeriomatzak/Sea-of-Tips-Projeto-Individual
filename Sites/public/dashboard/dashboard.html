@@ -98,7 +98,15 @@
             clearTimeout(proximaAtualizacao);
         }
 
-        fetch(`/quiz/buscarQuiz/`, { cache: 'no-store' }).then(function (response) {
+        fetch(`/quiz/buscarQuiz/`, {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify({
+                idUsuarioServer: sessionStorage.ID_USUARIO
+            })
+        }).then(function (response) {
             if (response.ok) {
                 response.json().then(function (resposta) {
                     console.log(`Dados recebidos: ${JSON.stringify(resposta)}`);
