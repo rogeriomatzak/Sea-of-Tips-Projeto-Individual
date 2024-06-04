@@ -1,5 +1,5 @@
-create database seaoftypes;
-use seaoftypes;
+create database seaoftipes;
+use seaoftipes;
 
 Create table peixes(
 idPeixe int primary key auto_increment,
@@ -41,9 +41,14 @@ pontuacao int,
 constraint foreign key (fkUsuario) references usuario(idUsuario));
 
 select *from quiz;
-SELECT pontuacao FROM quiz  join usuario on fkUsuario = idUsuario order by horario;
 
-
+SELECT pontuacao
+    FROM quiz
+    JOIN usuario ON fkUsuario = idUsuario
+    WHERE idUsuario =1
+    GROUP BY pontuacao,horario
+    ORDER BY horario;
+    
 
 
 
