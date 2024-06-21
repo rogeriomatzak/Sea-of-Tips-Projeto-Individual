@@ -15,6 +15,9 @@ router.post("/buscarQuiz", function (req, res) {
 router.post("/buscarUltimoQuiz", function (req, res) {
     quizController.buscarUltimoQuiz(req, res);
 });
+router.post("/calcularMediaPontuacao", function (req, res) {
+    quizController.calcularMediaPontuacao(req, res);
+});
 
 
 module.exports = router;

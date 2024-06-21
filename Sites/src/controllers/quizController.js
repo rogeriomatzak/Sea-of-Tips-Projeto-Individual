@@ -66,11 +66,29 @@ function buscarUltimoQuiz(req, res) {
       res.status(500).json(erro.sqlMessage);
   });
 }
+function calcularMediaPontuacao(req, res) {
+  var idUsuario = req.body.idUsuarioServer;
+
+  quizModel.calcularMediaPontuacao(idUsuario)
+      .then(function (resultado) {
+          if (resultado.length > 0) {
+              res.status(200).json({ mediaPercentual: resultado[0].mediaPercentual });
+          } else {
+              res.status(204).send("Nenhum resultado encontrado!");
+          }
+      })
+      .catch(function(erro) {
+          console.log(erro);
+          console.log("Houve um erro ao calcular a média de pontuação.", erro.sqlMessage);
+          res.status(500).json(erro.sqlMessage);
+      });
+}
 
 module.exports = {
   mensagem,
     SelectQuiz,
     buscarQuiz,
-    buscarUltimoQuiz
+    buscarUltimoQuiz,
+    calcularMediaPontuacao
   };
 
