@@ -418,3 +418,145 @@ h1 {
   color: white;
   margin-left: 200px;
 }
+.info-box {
+  margin-left: 250px;
+  color: white;
+  width: 900px;
+  height: 800px;
+  margin-left: 20%;
+  margin-top: 0;
+}
+.titulo-info {
+  font-size: 40px;
+  margin-left: 40%;
+  margin-bottom:7% ;
+  margin-top: 7%;
+}
+
+.podium-container {
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  margin-bottom: 20px;
+}
+
+.podium {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 160px;
+  text-align: center;
+  margin: 0 20px;
+  color: black;
+}
+
+.primeiro {
+  order: 2;
+  background-color: #FFD700;
+width: 180px;
+  height: 180px;
+  display: flex;
+  justify-content: center;
+  border-radius: 5%;
+  box-shadow: 0px 0px 15px  #FFD700;
+  margin-top: 5px;
+}
+.podium img{ 
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  
+
+
+}
+.segundo {
+  order: 1;
+  background-color: #C0C0C0;
+  width: 180px;
+  height: 130px;
+  display: flex;
+  justify-content: center;
+  border-radius: 5%;
+  box-shadow: 0px 0px 7px#C0C0C0;
+}
+
+.terceiro {
+  order: 3;
+  background-color: #CD7F32;
+  width: 180px;
+  height: 100px;
+  display: flex;
+  justify-content: center;
+  border-radius: 5%;
+  box-shadow: 0px 0px 5px #CD7F32; ;
+}
+
+.podium .position {
+  font-size: 1.5em;
+  font-weight: bold;
+}
+
+.podium .name {
+  font-weight: bold;
+  font-size: 1.2em;
+}
+
+.podium .score {
+  font-size: 1em;
+}
+
+.tabela {
+  width: 100%;
+  margin: 20px auto;
+  border-collapse: collapse;
+
+}
+
+.tabela thead {
+  background-color: #144a63;
+}
+
+.tabela th,
+.tabela td {
+  padding: 10px;
+  border: 1px solid #000000;
+  text-align: center;
+ 
+}
+td{
+  background-color: white;
+  color: black;
+}
+
+.atual {
+  font-weight: bold;
+  color: #000000;
+  text-shadow: 0px 0px 20px rgb(0, 0, 0);
+
+}
+.score{
+  color: rgb(0, 0, 0);
+ font-weight: bold;
+}
+.porcentagem{
+  text-align: center;
+  color: rgb(0, 0, 0);
+}
+.percentual{
+  color: rgb(0, 0, 0);
+  font-weight: bold;
+  display: flex;
+  margin-left: 40%;
+
+}
+.box_percentaul{
+  width: 180px;
+  height: 100px;
+  background-color: white;
+  border-color: black;
+  border-radius: 10px;
+  text-align: center;
+  display: flex;
+  box-shadow: 0px 0px 10px #000000;
+  margin-left: 80%;
+}

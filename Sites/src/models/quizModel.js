@@ -48,15 +48,28 @@ function buscarUltimoQuiz(idUsuario) {
 }
 function calcularMediaPontuacao(idUsuario) {
     console.log("Calculando média de pontuação para o usuário:", idUsuario);
-    
+
     var instrucaoSql = `
         SELECT 
-            (AVG(pontuacao) / (SELECT MAX(pontuacao) FROM quiz WHERE fkUsuario = ${idUsuario})) * 100 AS mediaPercentual
-        FROM quiz
-        WHERE fkUsuario = ${idUsuario};
+        (AVG(pontuacao) / 10) * 100 AS mediaPercentual
+    FROM quiz
+    WHERE fkUsuario = ${idUsuario};
     `;
-    
+
     console.log("Executando a instrução SQL: \n" + instrucaoSql);
+    return database.executar(instrucaoSql);
+}
+function obterClassificacao() {
+    const instrucaoSql = `
+        SELECT u.nome, q.pontuacao
+FROM usuario u
+JOIN (
+    SELECT fkUsuario, MAX(pontuacao) as pontuacao
+    FROM quiz
+    GROUP BY fkUsuario
+) q ON u.idUsuario = q.fkUsuario
+ORDER BY q.pontuacao DESC;
+    `;
     return database.executar(instrucaoSql);
 }
 module.exports = {
@@ -64,5 +77,6 @@ module.exports = {
     SelectQuiz,
     buscarQuiz,
     buscarUltimoQuiz,
-    calcularMediaPontuacao
+    calcularMediaPontuacao,
+    obterClassificacao
 };
