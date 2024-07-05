@@ -68,26 +68,32 @@
     window.onload = exibirQuizDosUsuarios();
 
     function exibirQuizDosUsuarios() {
-        document.getElementById("graficos").innerHTML += `
-       
-        <div id="grafico">
+    document.getElementById("graficos").innerHTML += `
+    <div id="grafico">
+        <div class="boxes-container">
             <div class="box_percentaul">
-                <p  class="porcentagem" id="percentualGeral"></p>
-                </div>
-            <h2 class="tituloGraficos">
-                <span id="tituloGrafico">Gráfico de Tentativas</span>
-            </h2>
-            <div class="graph">
-                <canvas id="myChartCanvas"></canvas>
+                <p class="porcentagem" id="percentualGeral"></p>
             </div>
-            <div class="label-captura">
-                <p id="avisoCaptura"></p>
+            <div class="box_maior">
+                <p class="porcentagem" id="maiorPontuacao"></p>
             </div>
         </div>
+        <h2 class="tituloGraficos">
+            <span id="tituloGrafico">Gráfico de Tentativas</span>
+        </h2>
+        <div class="graph">
+            <canvas id="myChartCanvas"></canvas>
+        </div>
+        <div class="label-captura">
+            <p id="avisoCaptura"></p>
+        </div>
+    </div>
     `;
+
 
         obterDadosGrafico();
         obterMediaPontuacao();
+        buscarMaiorPontuacao();
     }
 
     function obterDadosGrafico() {
@@ -211,6 +217,49 @@ function exibirMediaPontuacao(resposta) {
 
     let percentualGeral = document.getElementById("percentualGeral"); // Obtém o elemento onde o percentual será exibido
     // Define o texto do elemento com o percentual geral formatado com 2 casas decimais
-    percentualGeral.innerHTML = `Percentual Geral Das Tentativas<br> <p class="percentual">${Number(resposta.mediaPercentual).toFixed(2)}%</p>`;
+    percentualGeral.innerHTML = `Percentual Geral <br> <b>${Number(resposta.mediaPercentual).toFixed(2)}%</b>`;
 }
+function buscarMaiorPontuacao() {
+    // Faz uma requisição POST para o endpoint /quiz/buscarMaiorPontuacao/--Alteraçãoes feitas no dia 4/07/2024
+    fetch(`/quiz/buscarMaiorPontuacao/`, {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json",
+        },
+        // Envia o ID do usuário armazenado na sessionStorage no corpo da requisição
+        body: JSON.stringify({
+            idUsuarioServer: sessionStorage.ID_USUARIO
+        })
+    }).then(function (response) {
+        // Verifica se a resposta da requisição foi bem-sucedida
+        if (response.ok) {
+            // Converte a resposta para JSON
+            response.json().then(function (resposta) {
+                // Loga a maior pontuação recebida no console
+                console.log(`Maior pontuação recebida: ${JSON.stringify(resposta)}`);
+                // Chama a função para exibir a maior pontuação
+                exibirMaiorPontuacao(resposta);
+            });
+        } else {
+            // Loga um erro no console se a resposta não for bem-sucedida
+            console.error('Nenhum dado encontrado ou erro na API');
+        }
+    })
+    .catch(function (error) {
+        // Loga um erro no console se houver algum problema na requisição
+        console.error(`Erro na obtenção dos dados da maior pontuação: ${error.message}`);
+    });
+}
+
+// Função para exibir a maior pontuação recebida--Alteraçãoes feitas no dia 5/07/2024
+function exibirMaiorPontuacao(resposta) {
+    console.log('Exibindo maior pontuação...');
+
+    // Exemplo de como exibir a maior pontuação na interface
+    let maiorPontuacao = document.getElementById("maiorPontuacao");
+    // Define o conteúdo do elemento com o ID "maiorPontuacao" para mostrar a maior pontuação
+    maiorPontuacao.innerHTML = `Maior Pontuação<br><b>${resposta.maiorPontuacao}<b>`;
+}
+
+       
 </script>

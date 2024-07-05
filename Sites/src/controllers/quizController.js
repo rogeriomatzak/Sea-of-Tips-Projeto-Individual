@@ -86,6 +86,31 @@ function classificacao(req, res) {
             res.status(500).json(erro.sqlMessage);
         });
 }
+// Função para buscar a maior pontuação de um usuário--Alteraçãoes feitas no dia 3/07/2024
+function buscarMaiorPontuacao(req, res) {
+    // Extrai o ID do usuário a partir do corpo da requisição
+    var idUsuario = req.body.idUsuarioServer;
+
+    // Chama o método do modelo quizModel para buscar a maior pontuação do usuário
+    quizModel.buscarMaiorPontuacao(idUsuario)
+        .then(function (resultado) {
+            // Se a busca retornar resultados
+            if (resultado.length > 0) {
+                // Retorna o primeiro resultado com status 200 (OK) em formato JSON
+                res.status(200).json(resultado[0]);
+            } else {
+                // Se não houver resultados, retorna status 204 (No Content) com uma mensagem
+                res.status(204).send("Nenhuma pontuação encontrada para o usuário.");
+            }
+        })
+        .catch(function (erro) {
+            // Em caso de erro na busca, loga o erro no console
+            console.log(erro);
+            console.log("Houve um erro ao buscar a maior pontuação.", erro.sqlMessage);
+            // Retorna status 500 (Internal Server Error) com a mensagem de erro em formato JSON
+            res.status(500).json(erro.sqlMessage);
+        });
+}
 
 module.exports = {
     mensagem,
@@ -93,5 +118,6 @@ module.exports = {
     buscarQuiz,
     buscarUltimoQuiz,
     calcularMediaPontuacao,
-    classificacao
+    classificacao,
+    buscarMaiorPontuacao
 };

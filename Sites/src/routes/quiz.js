@@ -26,5 +26,8 @@ router.post("/calcularMediaPontuacao", function (req, res) {
 router.get("/classificacao", function (req, res) {
     quizController.classificacao(req, res);
 });
+router.post("/buscarMaiorPontuacao", function (req, res) {
+    quizController.buscarMaiorPontuacao(req, res);
+});
 
 module.exports = router;

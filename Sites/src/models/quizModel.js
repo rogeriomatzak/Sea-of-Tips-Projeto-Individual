@@ -72,11 +72,21 @@ ORDER BY q.pontuacao DESC;
     `;
     return database.executar(instrucaoSql);
 }
+function buscarMaiorPontuacao(idUsuario) {
+    var instrucaoSql = `
+        SELECT MAX(pontuacao) AS maiorPontuacao
+        FROM quiz
+        WHERE fkUsuario = ${idUsuario};
+    `;
+    console.log("Executando a instrução SQL: \n" + instrucaoSql);
+    return database.executar(instrucaoSql);
+}
 module.exports = {
     mensagem,
     SelectQuiz,
     buscarQuiz,
     buscarUltimoQuiz,
     calcularMediaPontuacao,
-    obterClassificacao
+    obterClassificacao,
+    buscarMaiorPontuacao
 };
