@@ -59,42 +59,65 @@
 
 </body>
 
-</html>
-
 <script>
     b_usuario.innerHTML = sessionStorage.NOME_USUARIO;
     let proximaAtualizacao;
+    let tipoGrafico = 'line'; // Define o tipo de gráfico inicial - Alteraçães feitas no dia 7/07/2024	
 
     window.onload = exibirQuizDosUsuarios();
 
     function exibirQuizDosUsuarios() {
-    document.getElementById("graficos").innerHTML += `
-    <div id="grafico">
-        <div class="boxes-container">
-            <div class="box_percentaul">
-                <p class="porcentagem" id="percentualGeral"></p>
+        document.getElementById("graficos").innerHTML += `
+        <div id="grafico">
+            <div class="boxes-container">
+                <div class="box_qtd_tentativas">
+                    <p class="porcentagem" id="quantidadeTentativas"></p>
+                </div>
+                <div class="box_maior">
+                    <p class="porcentagem" id="maiorPontuacao"></p>
+                </div>
+                <div class="box_percentaul">
+                    <p class="porcentagem" id="percentualGeral"></p>
+                </div>
             </div>
-            <div class="box_maior">
-                <p class="porcentagem" id="maiorPontuacao"></p>
+            <h2 class="tituloGraficos">
+                <span id="tituloGrafico">Gráfico de Tentativas</span>
+            </h2>
+          <div class="select-grafico">
+            <label for="tipoGrafico">Selecione o tipo de gráfico</label>
+            <select id="tipoGrafico" onchange="atualizarTipoGrafico()">
+             <option value="line" selected>Linha</option>
+            <option value="bar">Barra</option>
+            </select>
+         </div>
+            <div class="graph">
+                <canvas id="myChartCanvas"></canvas>
+            </div>
+            <div class="label-captura">
+                <p id="avisoCaptura"></p>
             </div>
         </div>
-        <h2 class="tituloGraficos">
-            <span id="tituloGrafico">Gráfico de Tentativas</span>
-        </h2>
-        <div class="graph">
-            <canvas id="myChartCanvas"></canvas>
-        </div>
-        <div class="label-captura">
-            <p id="avisoCaptura"></p>
-        </div>
-    </div>
-    `;
-
+        `;
 
         obterDadosGrafico();
         obterMediaPontuacao();
         buscarMaiorPontuacao();
+        buscarQuantidadeTentativas();  // - Alteraçães feitas no dia 8/07/2024	
     }
+
+  // Função para atualizar o tipo de gráfico selecionado - Alteraçães feitas no dia 7/07/2024	
+function atualizarTipoGrafico() {
+    let tipoGraficoSelecionado = document.getElementById('tipoGrafico').value;
+    tipoGrafico = tipoGraficoSelecionado;
+    
+    // Obtém o gráfico existente e o destrói antes de criar com o novo tipo -Alteraçães feitas no dia 7/07/2024	
+    let graficoExistente = Chart.getChart("myChartCanvas");
+    if (graficoExistente) {
+        graficoExistente.destroy();
+    }
+    
+    obterDadosGrafico(); // Chama a função para obter e plotar os dados com o novo tipo de gráfico -Alteraçães feitas no dia 7/07/2024	
+}
 
     function obterDadosGrafico() {
         if (proximaAtualizacao != undefined) {
@@ -146,38 +169,37 @@
                 fill: false
             }]
         };
-   
 
-    const config = {
-    type: 'line',
-    data: dados,
-    options: {
-        plugins: {
-            tooltip: {
-                enabled: true
-            },
-            legend: {
-                labels: {
-                    color: 'white' // Configura a cor do label da legenda
+        const config = {
+            type: tipoGrafico, // Define o tipo de gráfico -Alteraçães feitas no dia 7/07/2024	
+            data: dados,
+            options: {
+                plugins: {
+                    tooltip: {
+                        enabled: true
+                    },
+                    legend: {
+                        labels: {
+                            color: 'white' // Configura a cor do label da legenda
+                        }
+                    }
+                },
+                scales: {
+                    x: {
+                        beginAtZero: true,
+                        ticks: {
+                            color: 'white' // Configura a cor dos ticks no eixo x
+                        }
+                    },
+                    y: {
+                        beginAtZero: true,
+                        ticks: {
+                            color: 'white' // Configura a cor dos ticks no eixo y
+                        }
+                    }
                 }
             }
-        },
-        scales: {
-            x: {
-                beginAtZero: true,
-                ticks: {
-                    color: 'white' // Configura a cor dos ticks no eixo x
-                }
-            },
-            y: {
-                beginAtZero: true,
-                ticks: {
-                    color: 'white' // Configura a cor dos ticks no eixo y
-                }
-            }
-        }
-    }
-};
+        };
 
         let myChart = new Chart(
             document.getElementById(`myChartCanvas`),
@@ -185,81 +207,123 @@
         );
     }
 
-   // Função para obter a média de pontuação
-function obterMediaPontuacao() {
-    // Faz uma requisição para o endpoint `/quiz/calcularMediaPontuacao/`
-    fetch(`/quiz/calcularMediaPontuacao/`, {
-        method: "POST", // Método HTTP POST
-        headers: {
-            "Content-Type": "application/json", // Define o tipo de conteúdo como JSON
-        },
-        body: JSON.stringify({
-            idUsuarioServer: sessionStorage.ID_USUARIO // Envia o ID do usuário no corpo da requisição
+    // Função para obter a média de pontuação
+    function obterMediaPontuacao() {
+        // Faz uma requisição para o endpoint `/quiz/calcularMediaPontuacao/`
+        fetch(`/quiz/calcularMediaPontuacao/`, {
+            method: "POST", // Método HTTP POST
+            headers: {
+                "Content-Type": "application/json", // Define o tipo de conteúdo como JSON
+            },
+            body: JSON.stringify({
+                idUsuarioServer: sessionStorage.ID_USUARIO // Envia o ID do usuário no corpo da requisição
+            })
+        }).then(function (response) { // Quando a resposta é recebida
+            if (response.ok) { // Se a resposta for bem-sucedida
+                response.json().then(function (resposta) { // Converte a resposta para JSON
+                    console.log(`Percentual de pontuação recebido: ${JSON.stringify(resposta)}`); // Loga a resposta no console
+                    exibirMediaPontuacao(resposta); // Chama a função para exibir a média de pontuação
+                });
+            } else {
+                console.error('Nenhum dado encontrado ou erro na API'); // Loga um erro se a resposta não for bem-sucedida
+            }
         })
-    }).then(function (response) { // Quando a resposta é recebida
-        if (response.ok) { // Se a resposta for bem-sucedida
-            response.json().then(function (resposta) { // Converte a resposta para JSON
-                console.log(`Percentual de pontuação recebido: ${JSON.stringify(resposta)}`); // Loga a resposta no console
-                exibirMediaPontuacao(resposta); // Chama a função para exibir a média de pontuação
+            .catch(function (error) { // Captura erros na requisição
+                console.error(`Erro na obtenção dos dados de percentual: ${error.message}`); // Loga o erro no console
             });
-        } else {
-            console.error('Nenhum dado encontrado ou erro na API'); // Loga um erro se a resposta não for bem-sucedida
-        }
-    })
-    .catch(function (error) { // Captura erros na requisição
-        console.error(`Erro na obtenção dos dados de percentual: ${error.message}`); // Loga o erro no console
-    });
-}
+    }
 
-// Função para exibir a média de pontuação
-function exibirMediaPontuacao(resposta) {
-    console.log('Exibindo percentual de pontuação...'); // Loga uma mensagem no console
+    // Função para exibir a média de pontuação
+    function exibirMediaPontuacao(resposta) {
+        console.log('Exibindo percentual de pontuação...'); // Loga uma mensagem no console
 
-    let percentualGeral = document.getElementById("percentualGeral"); // Obtém o elemento onde o percentual será exibido
-    // Define o texto do elemento com o percentual geral formatado com 2 casas decimais
-    percentualGeral.innerHTML = `Percentual Geral <br> <b>${Number(resposta.mediaPercentual).toFixed(2)}%</b>`;
-}
-function buscarMaiorPontuacao() {
-    // Faz uma requisição POST para o endpoint /quiz/buscarMaiorPontuacao/--Alteraçãoes feitas no dia 4/07/2024
-    fetch(`/quiz/buscarMaiorPontuacao/`, {
+        let percentualGeral = document.getElementById("percentualGeral"); // Obtém o elemento onde o percentual será exibido
+        // Define o texto do elemento com o percentual geral formatado com 2 casas decimais
+        percentualGeral.innerHTML = `Percentual Geral <br> <b>${Number(resposta.mediaPercentual).toFixed(2)}%</b>`;
+    }
+
+    function buscarMaiorPontuacao() {
+        // Faz uma requisição POST para o endpoint /quiz/buscarMaiorPontuacao/--Alteraçãoes feitas no dia 4/07/2024
+        fetch(`/quiz/buscarMaiorPontuacao/`, {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            // Envia o ID do usuário armazenado na sessionStorage no corpo da requisição
+            body: JSON.stringify({
+                idUsuarioServer: sessionStorage.ID_USUARIO
+            })
+        }).then(function (response) {
+            // Verifica se a resposta da requisição foi bem-sucedida
+            if (response.ok) {
+                // Converte a resposta para JSON
+                response.json().then(function (resposta) {
+                    // Loga a maior pontuação recebida no console
+                    console.log(`Maior pontuação recebida: ${JSON.stringify(resposta)}`);
+                    // Chama a função para exibir a maior pontuação
+                    exibirMaiorPontuacao(resposta);
+                });
+            } else {
+                // Loga um erro no console se a resposta não for bem-sucedida
+                console.error('Nenhum dado encontrado ou erro na API');
+            }
+        })
+            .catch(function (error) {
+                // Loga um erro no console se houver algum problema na requisição
+                console.error(`Erro na obtenção dos dados da maior pontuação: ${error.message}`);
+            });
+    }
+
+    // Função para exibir a maior pontuação recebida--Alteraçãoes feitas no dia 5/07/2024
+    function exibirMaiorPontuacao(resposta) {
+        console.log('Exibindo maior pontuação...');
+
+        // Exemplo de como exibir a maior pontuação na interface
+        let maiorPontuacao = document.getElementById("maiorPontuacao");
+        // Define o conteúdo do elemento com o ID "maiorPontuacao" para mostrar a maior pontuação
+        maiorPontuacao.innerHTML = `Maior Pontuação<br><b>${resposta.maiorPontuacao}</b>`;
+    }
+
+   // Função para buscar a quantidade de tentativas do usuário - Alteraçães feitas no dia 8/07/2024	
+function buscarQuantidadeTentativas() {
+    console.log('Chamando buscarQuantidadeTentativas...');  // Log para verificar se a função está sendo chamada
+
+    // Faz uma requisição POST para o endpoint /quiz/buscarQuantidadeTentativas/
+    fetch(`/quiz/buscarQuantidadeTentativas/`, {
         method: "POST",
         headers: {
             "Content-Type": "application/json",
         },
-        // Envia o ID do usuário armazenado na sessionStorage no corpo da requisição
         body: JSON.stringify({
-            idUsuarioServer: sessionStorage.ID_USUARIO
+            idUsuarioServer: sessionStorage.ID_USUARIO // Envia o ID do usuário armazenado na sessionStorage na requisição
         })
-    }).then(function (response) {
-        // Verifica se a resposta da requisição foi bem-sucedida
-        if (response.ok) {
-            // Converte a resposta para JSON
-            response.json().then(function (resposta) {
-                // Loga a maior pontuação recebida no console
-                console.log(`Maior pontuação recebida: ${JSON.stringify(resposta)}`);
-                // Chama a função para exibir a maior pontuação
-                exibirMaiorPontuacao(resposta);
+    }).then(function (response) { // Quando a resposta é recebida
+        if (response.ok) { // Se a resposta for bem-sucedida
+            response.json().then(function (resposta) { // Converte a resposta para JSON
+                console.log(`Quantidade de tentativas recebida: ${JSON.stringify(resposta)}`);  // Loga a resposta recebida no console
+                exibirQuantidadeTentativas(resposta); // Chama a função para exibir a quantidade de tentativas
             });
         } else {
-            // Loga um erro no console se a resposta não for bem-sucedida
-            console.error('Nenhum dado encontrado ou erro na API');
+            console.error('Nenhum dado encontrado ou erro na API'); // Loga um erro se a resposta não for bem-sucedida
         }
-    })
-    .catch(function (error) {
-        // Loga um erro no console se houver algum problema na requisição
-        console.error(`Erro na obtenção dos dados da maior pontuação: ${error.message}`);
+    }).catch(function (error) { // Captura erros na requisição
+        console.error(`Erro na obtenção da quantidade de tentativas: ${error.message}`); // Loga o erro no console
     });
 }
 
-// Função para exibir a maior pontuação recebida--Alteraçãoes feitas no dia 5/07/2024
-function exibirMaiorPontuacao(resposta) {
-    console.log('Exibindo maior pontuação...');
+// Função para exibir a quantidade de tentativas na interface - Alteraçães feitas no dia 8/07/2024	
+function exibirQuantidadeTentativas(resposta) {
+    console.log('Exibindo quantidade de tentativas...');  // Log para verificar se a função está sendo chamada
 
-    // Exemplo de como exibir a maior pontuação na interface
-    let maiorPontuacao = document.getElementById("maiorPontuacao");
-    // Define o conteúdo do elemento com o ID "maiorPontuacao" para mostrar a maior pontuação
-    maiorPontuacao.innerHTML = `Maior Pontuação<br><b>${resposta.maiorPontuacao}<b>`;
+    let quantidadeTentativas = document.getElementById("quantidadeTentativas");
+
+    if (quantidadeTentativas) { // Verifica se o elemento com o ID quantidadeTentativas existe 
+        quantidadeTentativas.innerHTML = `Quantidade de Tentativas<br><b>${resposta.quantidadeTentativas}</b>`; // Define o conteúdo do elemento com a quantidade de tentativas
+    } else {
+        console.error(' quantidadeTentativa não encontrado ');  // Loga um erro se o elemento não for encontrado 
+    }
 }
 
-       
 </script>
+
+</html>

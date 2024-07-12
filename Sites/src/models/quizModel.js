@@ -81,6 +81,15 @@ function buscarMaiorPontuacao(idUsuario) {
     console.log("Executando a instrução SQL: \n" + instrucaoSql);
     return database.executar(instrucaoSql);
 }
+function buscarQuantidadeTentativas(idUsuario) {
+    var instrucaoSql = `
+        SELECT COUNT(*) AS quantidadeTentativas
+        FROM quiz
+        WHERE fkUsuario = ${idUsuario};
+    `;
+    console.log("Executando a instrução SQL: \n" + instrucaoSql);
+    return database.executar(instrucaoSql);
+}
 module.exports = {
     mensagem,
     SelectQuiz,
@@ -88,5 +97,6 @@ module.exports = {
     buscarUltimoQuiz,
     calcularMediaPontuacao,
     obterClassificacao,
-    buscarMaiorPontuacao
+    buscarMaiorPontuacao,
+    buscarQuantidadeTentativas
 };

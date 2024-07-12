@@ -29,5 +29,8 @@ router.get("/classificacao", function (req, res) {
 router.post("/buscarMaiorPontuacao", function (req, res) {
     quizController.buscarMaiorPontuacao(req, res);
 });
+router.post("/buscarQuantidadeTentativas", function (req, res) {
+    quizController.buscarQuantidadeTentativas(req, res);
+});
 
 module.exports = router;

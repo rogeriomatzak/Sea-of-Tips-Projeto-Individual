@@ -111,6 +111,31 @@ function buscarMaiorPontuacao(req, res) {
             res.status(500).json(erro.sqlMessage);
         });
 }
+function buscarQuantidadeTentativas(req, res) {
+    // Obtém o ID do usuário a partir  da requisição
+    var idUsuario = req.body.idUsuarioServer;
+
+    // Chama o  buscarQuantidadeTentativas no quizModel, passando o ID do usuário
+    quizModel.buscarQuantidadeTentativas(idUsuario)
+        .then(function (resultado) {
+            // Se o resultado contiver pelo menos um registro
+            if (resultado.length > 0) {
+                // Envia o primeiro registro encontrado como resposta, com status 200 (OK)
+                res.status(200).json(resultado[0]);
+            } else {
+                // Se não houver registros, envia uma resposta com status 204 (Sem Conteúdo) e uma mensagem
+                res.status(204).send("Nenhuma tentativa encontrada para o usuário.");
+            }
+        })
+        .catch(function (erro) {
+            // Em caso de erro, loga o erro no console
+            console.log(erro);
+            console.log("Houve um erro ao buscar a quantidade de tentativas.", erro.sqlMessage);
+            // Envia uma resposta com status 500 (Erro Interno do Servidor) e a mensagem de erro
+            res.status(500).json(erro.sqlMessage);
+        });
+}
+
 
 module.exports = {
     mensagem,
@@ -119,5 +144,6 @@ module.exports = {
     buscarUltimoQuiz,
     calcularMediaPontuacao,
     classificacao,
-    buscarMaiorPontuacao
+    buscarMaiorPontuacao,
+    buscarQuantidadeTentativas
 };
