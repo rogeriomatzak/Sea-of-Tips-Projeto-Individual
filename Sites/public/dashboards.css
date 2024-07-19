@@ -553,11 +553,11 @@ td{
 .boxes-container {
     display: flex;
     justify-content: space-around;
-    margin-top: 20px;
+    flex-wrap: nowrap;
 }
 
-.box_percentaul, .box_maior,.box_qtd_tentativas {
-  width: 180px;
+.box_percentaul, .box_maior,.box_qtd_tentativas,.box_media_geral,.box_menor{
+  width: 170px;
   height: 100px;
   background-color: white;
   border-color: black;

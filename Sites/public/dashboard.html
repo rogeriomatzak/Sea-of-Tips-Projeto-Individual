@@ -76,10 +76,16 @@
                 <div class="box_maior">
                     <p class="porcentagem" id="maiorPontuacao"></p>
                 </div>
+                   <div class="box_menor">
+                    <p class="porcentagem" id="menorPontuacao"></p>
+                </div>
                 <div class="box_percentaul">
                     <p class="porcentagem" id="percentualGeral"></p>
                 </div>
-            </div>
+             <div class="box_media_geral">
+                    <p class="porcentagem" id="mediaGeral"></p>
+                </div>
+               </div>
             <h2 class="tituloGraficos">
                 <span id="tituloGrafico">Gráfico de Tentativas</span>
             </h2>
@@ -103,6 +109,8 @@
         obterMediaPontuacao();
         buscarMaiorPontuacao();
         buscarQuantidadeTentativas();  // - Alteraçães feitas no dia 8/07/2024	
+        obterMediaGeral(); // - Alteraçães feitas no dia 16/07/2024
+        buscarMenorPontuacao(); //- Alteraçães feitas no dia 17/07/2024
     }
 
   // Função para atualizar o tipo de gráfico selecionado - Alteraçães feitas no dia 7/07/2024	
@@ -239,7 +247,7 @@ function atualizarTipoGrafico() {
 
         let percentualGeral = document.getElementById("percentualGeral"); // Obtém o elemento onde o percentual será exibido
         // Define o texto do elemento com o percentual geral formatado com 2 casas decimais
-        percentualGeral.innerHTML = `Percentual Geral <br> <b>${Number(resposta.mediaPercentual).toFixed(2)}%</b>`;
+        percentualGeral.innerHTML = ` Seu Percentual De Acerto<br> <b>${Number(resposta.mediaPercentual).toFixed(2)}%</b>`;
     }
 
     function buscarMaiorPontuacao() {
@@ -322,6 +330,81 @@ function exibirQuantidadeTentativas(resposta) {
     } else {
         console.error(' quantidadeTentativa não encontrado ');  // Loga um erro se o elemento não for encontrado 
     }
+}
+
+// Função para obter a média geral de pontuação de todos os usuários - Alteraçães feitas no dia 16/07/2024
+function obterMediaGeral() {
+    fetch("/quiz/calcularMediaGeral", {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json",
+        }
+    }).then(function (response) {
+        if (response.ok) {
+            response.json().then(function (resposta) {
+                // Mostra a média geral recebida no console
+                console.log(`Média geral de pontuação recebida: ${JSON.stringify(resposta)}`);
+                // Chama a função para exibir a média geral na interface
+                exibirMediaGeral(resposta);
+            });
+        } else {
+            // Mostra um erro no console se a resposta não for bem-sucedida
+            console.error('Nenhum dado encontrado ou erro na API');
+        }
+    })
+    .catch(function (error) {
+        // Mostra um erro no console se houver algum problema na requisição
+        console.error(`Erro na obtenção dos dados de média geral: ${error.message}`);
+    });
+}
+
+// Função para exibir a média geral de pontuação na interface
+function exibirMediaGeral(resposta) {
+    console.log('Exibindo média geral de pontuação...');
+
+    // Seleciona o elemento HTML com o ID "mediaGeral"
+    let mediaGeral = document.getElementById("mediaGeral");
+    // Define o conteúdo do elemento para mostrar a média geral formatada com duas casas decimais
+    mediaGeral.innerHTML = `Média Geral <br> <b>${Number(resposta.mediaGeral).toFixed(2)}</b>`;
+}
+
+// Função para buscar a menor pontuação de um usuário específico - Alteraçães feitas no dia 17/07/2024
+function buscarMenorPontuacao() {
+    fetch(`/quiz/buscarMenorPontuacao/`, {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+            idUsuarioServer: sessionStorage.ID_USUARIO
+        })
+    }).then(function (response) {
+        if (response.ok) {
+            response.json().then(function (resposta) {
+                // Mostra a menor pontuação recebida no console
+                console.log(`Menor pontuação recebida: ${JSON.stringify(resposta)}`);
+                // Chama a função para exibir a menor pontuação na interface
+                exibirMenorPontuacao(resposta);
+            });
+        } else {
+            // Mostra um erro no console se a resposta não for bem-sucedida
+            console.error('Nenhum dado encontrado ou erro na API');
+        }
+    })
+    .catch(function (error) {
+        // Loga um erro no console se houver algum problema na requisição
+        console.error(`Erro na obtenção dos dados da menor pontuação: ${error.message}`);
+    });
+}
+
+// Função para exibir a menor pontuação na interface
+function exibirMenorPontuacao(resposta) {
+    console.log('Exibindo menor pontuação...');
+
+    // Seleciona o elemento HTML com o ID "menorPontuacao"
+    let menorPontuacao = document.getElementById("menorPontuacao");
+    // Define o conteúdo do elemento para mostrar a menor pontuação recebida
+    menorPontuacao.innerHTML = `Menor Pontuação<br><b>${resposta.menorPontuacao}</b>`;
 }
 
 </script>

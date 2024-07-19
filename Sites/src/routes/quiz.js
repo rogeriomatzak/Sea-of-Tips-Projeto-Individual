@@ -32,5 +32,10 @@ router.post("/buscarMaiorPontuacao", function (req, res) {
 router.post("/buscarQuantidadeTentativas", function (req, res) {
     quizController.buscarQuantidadeTentativas(req, res);
 });
-
+router.post("/calcularMediaGeral", function (req, res) {
+    quizController.calcularMediaGeral(req, res);
+});
+router.post("/buscarMenorPontuacao", function (req, res) {
+    quizController.buscarMenorPontuacao(req, res);
+});
 module.exports = router;

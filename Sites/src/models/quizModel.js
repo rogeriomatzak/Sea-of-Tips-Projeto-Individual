@@ -90,6 +90,25 @@ function buscarQuantidadeTentativas(idUsuario) {
     console.log("Executando a instrução SQL: \n" + instrucaoSql);
     return database.executar(instrucaoSql);
 }
+function calcularMediaGeral() {
+    console.log("Calculando média geral de pontuação.");
+
+    var instrucaoSql = 
+        `SELECT AVG(pontuacao) AS mediaGeral
+         FROM quiz;`;
+
+    console.log("Executando a instrução SQL: \n" + instrucaoSql);
+    return database.executar(instrucaoSql);
+}
+function buscarMenorPontuacao(idUsuario) {
+    var instrucaoSql = `
+        SELECT MIN(pontuacao) AS menorPontuacao
+        FROM quiz
+        WHERE fkUsuario = ${idUsuario};
+    `;
+    console.log("Executando a instrução SQL: \n" + instrucaoSql);
+    return database.executar(instrucaoSql);
+}
 module.exports = {
     mensagem,
     SelectQuiz,
@@ -98,5 +117,7 @@ module.exports = {
     calcularMediaPontuacao,
     obterClassificacao,
     buscarMaiorPontuacao,
-    buscarQuantidadeTentativas
+    buscarQuantidadeTentativas,
+    calcularMediaGeral,
+    buscarMenorPontuacao
 };

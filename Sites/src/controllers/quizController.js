@@ -135,6 +135,54 @@ function buscarQuantidadeTentativas(req, res) {
             res.status(500).json(erro.sqlMessage);
         });
 }
+// Função para calcular a média geral de pontuação de todos os usuários --Alteraçãoes feitas no dia 16/07/2024
+function calcularMediaGeral(req, res) {
+    // Chama o método do modelo quizModel para calcular a média geral
+    quizModel.calcularMediaGeral()
+        .then(function (resultado) {
+            // Verifica se há resultados retornados
+            if (resultado.length > 0) {
+                // Se houver resultados, retorna a média geral com status 200 (OK) em formato JSON
+                res.status(200).json({ mediaGeral: resultado[0].mediaGeral });
+            } else {
+                // Se não houver resultados, retorna status 204 (No Content) com uma mensagem
+                res.status(204).send("Nenhum resultado encontrado!");
+            }
+        })
+        .catch(function (erro) {
+            // Em caso de erro no cálculo, mostra o erro no console
+            console.log(erro);
+            console.log("Houve um erro ao calcular a média geral de pontuação.", erro.sqlMessage);
+            // Retorna status 500 (Internal Server Error) com a mensagem de erro em formato JSON
+            res.status(500).json(erro.sqlMessage);
+        });
+}
+
+// Função para buscar a menor pontuação de um usuário específico --Alteraçãoes feitas no dia 17/07/2024
+function buscarMenorPontuacao(req, res) {
+    // Extrai o ID do usuário a partir do corpo da requisição
+    var idUsuario = req.body.idUsuarioServer;
+
+    // Chama o método do modelo quizModel para buscar a menor pontuação do usuário
+    quizModel.buscarMenorPontuacao(idUsuario)
+        .then(function (resultado) {
+            // Verifica se há resultados retornados
+            if (resultado.length > 0) {
+                // Se houver resultados, retorna a menor pontuação com status 200 (OK) em formato JSON
+                res.status(200).json(resultado[0]);
+            } else {
+                // Se não houver resultados, retorna status 204 (No Content) com uma mensagem
+                res.status(204).send("Nenhuma pontuação encontrada para o usuário.");
+            }
+        })
+        .catch(function (erro) {
+            // Em caso de erro na busca, mostra o erro no console
+            console.log(erro);
+            console.log("Houve um erro ao buscar a menor pontuação.", erro.sqlMessage);
+            // Retorna status 500 (Internal Server Error) com a mensagem de erro em formato JSON
+            res.status(500).json(erro.sqlMessage);
+        });
+}
 
 
 module.exports = {
@@ -145,5 +193,7 @@ module.exports = {
     calcularMediaPontuacao,
     classificacao,
     buscarMaiorPontuacao,
-    buscarQuantidadeTentativas
+    buscarQuantidadeTentativas,
+    calcularMediaGeral,
+    buscarMenorPontuacao
 };
