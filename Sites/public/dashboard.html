@@ -64,7 +64,42 @@
     let proximaAtualizacao;
     let tipoGrafico = 'line'; // Define o tipo de gráfico inicial - Alteraçães feitas no dia 7/07/2024	
 
-    window.onload = exibirQuizDosUsuarios();
+    window.onload = verificarTentativas();  //- Alteraçães feitas no dia 24/07/2024
+   // Função para verificar a quantidade de tentativas de quiz de um usuário - Alteraçães feitas no dia 24/07/2024
+function verificarTentativas() {
+    // Faz uma requisição POST para o endpoint /quiz/buscarQuantidadeTentativas/
+    fetch(`/quiz/buscarQuantidadeTentativas/`, {
+        method: "POST", // Define o método HTTP como POST
+        headers: {
+            "Content-Type": "application/json", // Define o tipo de conteúdo como JSON
+        },
+        // Envia o ID do usuário armazenado na sessionStorage  
+        body: JSON.stringify({
+            idUsuarioServer: sessionStorage.ID_USUARIO
+        })
+    }).then(function (response) { // Quando a resposta é recebida
+        if (response.ok) { // Se a resposta for bem-sucedida (status 200-299)
+            response.json().then(function (resposta) { // Converte a resposta para JSON
+                console.log(`Quantidade de tentativas recebida: ${JSON.stringify(resposta)}`); // Loga a resposta recebida no console
+                if (resposta.quantidadeTentativas > 0) { // Se o número de tentativas for maior que zero
+                    exibirQuizDosUsuarios(); // Chama a função para exibir os dados dos quizzes
+                } else { // Se não houver tentativas
+                    // Atualiza o conteúdo do elemento com ID "graficos" para mostrar uma mensagem informando que não há tentativas
+                    document.getElementById("graficos").innerHTML = `<p class="nenhuma_tentativa">Você ainda não fez possui nenhuma tentativa de quiz !!</p>`;
+                }
+            });
+        } else { // Se a resposta não for bem-sucedida
+            console.error('Nenhum dado encontrado ou erro na API'); // Loga um erro no console
+            // Atualiza o conteúdo do elemento com ID "graficos" para mostrar uma mensagem de erro
+            document.getElementById("graficos").innerHTML = `<p>Erro ao buscar dados. Por favor, tente novamente mais tarde.</p>`;
+        }
+    })
+    .catch(function (error) { // Captura erros na requisição
+        console.error(`Erro na obtenção dos dados de tentativas: ${error.message}`); // Loga o erro no console
+        // Atualiza o conteúdo do elemento com ID "graficos" para mostrar uma mensagem de erro
+        document.getElementById("graficos").innerHTML = `<p>Erro ao buscar dados. Por favor, tente novamente mais tarde.</p>`;
+    });
+}
 
     function exibirQuizDosUsuarios() {
         document.getElementById("graficos").innerHTML += `
@@ -267,7 +302,7 @@ function atualizarTipoGrafico() {
                 // Converte a resposta para JSON
                 response.json().then(function (resposta) {
                     // Loga a maior pontuação recebida no console
-                    console.log(`Maior pontuação recebida: ${JSON.stringify(resposta)}`);
+                    console.log(` Sua maior pontuação recebida: ${JSON.stringify(resposta)}`);
                     // Chama a função para exibir a maior pontuação
                     exibirMaiorPontuacao(resposta);
                 });
@@ -289,7 +324,7 @@ function atualizarTipoGrafico() {
         // Exemplo de como exibir a maior pontuação na interface
         let maiorPontuacao = document.getElementById("maiorPontuacao");
         // Define o conteúdo do elemento com o ID "maiorPontuacao" para mostrar a maior pontuação
-        maiorPontuacao.innerHTML = `Maior Pontuação<br><b>${resposta.maiorPontuacao}</b>`;
+        maiorPontuacao.innerHTML = ` Sua Maior Pontuação<br><b>${resposta.maiorPontuacao}</b>`;
     }
 
    // Função para buscar a quantidade de tentativas do usuário - Alteraçães feitas no dia 8/07/2024	
@@ -404,7 +439,7 @@ function exibirMenorPontuacao(resposta) {
     // Seleciona o elemento HTML com o ID "menorPontuacao"
     let menorPontuacao = document.getElementById("menorPontuacao");
     // Define o conteúdo do elemento para mostrar a menor pontuação recebida
-    menorPontuacao.innerHTML = `Menor Pontuação<br><b>${resposta.menorPontuacao}</b>`;
+    menorPontuacao.innerHTML = ` Sua Menor Pontuação<br><b>${resposta.menorPontuacao}</b>`;
 }
 
 </script>

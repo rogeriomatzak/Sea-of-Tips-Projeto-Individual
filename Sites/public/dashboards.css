@@ -553,6 +553,7 @@ td{
 .boxes-container {
     display: flex;
     justify-content: space-around;
+    flex-direction: row;
     flex-wrap: nowrap;
 }
 
@@ -581,4 +582,12 @@ b{
 }
 .select-grafico select{
   margin-left: 2%;
+}
+.nenhuma_tentativa{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 40px;
+  color: white;
+  margin-top: 23%;
 }
