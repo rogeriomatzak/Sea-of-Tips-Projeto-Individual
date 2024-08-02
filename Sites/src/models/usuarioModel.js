@@ -21,8 +21,19 @@ function cadastrar(nome, email, senha,peixes ) {
     console.log("Executando a instrução SQL: \n" + instrucaoSql);
     return database.executar(instrucaoSql);
 }
+function obterPeixesFavoritos() {
+    var instrucaoSql = `
+        SELECT peixes.nome AS nomePeixe, COUNT(usuario.fkPeixe) AS quantidade
+        FROM usuario
+        JOIN peixes ON usuario.fkPeixe = peixes.idPeixe
+        GROUP BY peixes.nome
+    `;
+    return database.executar(instrucaoSql);
+}
+
 
 module.exports = {
     autenticar,
-    cadastrar
+    cadastrar,
+    obterPeixesFavoritos
 };

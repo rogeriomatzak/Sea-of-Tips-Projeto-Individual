@@ -78,7 +78,28 @@ function cadastrar(req, res) {
     }
 }
 
+// Função para obter os peixes favoritos de um usuário -- Alteraçãoes do dia 30/08
+function obterPeixesFavoritos(req, res) {
+    // Chama o método obterPeixesFavoritos do modelo de usuário (usuarioModel)
+    usuarioModel.obterPeixesFavoritos()
+    .then(function(resultado) {
+        // Envia o resultado como uma resposta JSON
+        res.json(resultado);
+    })
+    // Se houver um erro ao obter os peixes favoritos
+    .catch(function(erro) {
+        // Imprime uma mensagem de erro no console
+        console.log("\nHouve um erro ao obter os peixes favoritos! Erro: ", erro.sqlMessage);
+        // Responde com status 500 (erro do servidor) e a mensagem de erro em formato JSON
+        res.status(500).json(erro.sqlMessage);
+    });
+}
+
+
+
 module.exports = {
     autenticar,
-    cadastrar
-}
+    cadastrar,
+    obterPeixesFavoritos
+};
+

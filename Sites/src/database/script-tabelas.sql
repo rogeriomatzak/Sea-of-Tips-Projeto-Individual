@@ -11,17 +11,11 @@ insert into peixes value
 (default,'Pacu' ),
 (default,'Tucunaré' ),
 (default,'Carpa' ),
-(default,'Cascudo' ),
-(default,'Tambaqui' ),
 (default,'Pirarucu' ),
 (default,'Peixe-Espada' ),
-(default,'Pirara' ),
-(default,'Traíra' ),
-(default,'Bagre' ),
 (default,'Robalo' );
 
 select *from peixes;
-
 
 create table usuario(
 idUsuario int primary key auto_increment,
@@ -30,6 +24,18 @@ email varchar (45),
 senha varchar (45),
 fkPeixe int ,
 foreign key (fkPeixe) references peixes (idPeixe));
+
+INSERT INTO usuario (nome, email, senha, fkPeixe) VALUES 
+('Usuario1', 'usuario1@exemplo.com', 'senha1', 1),
+('Usuario2', 'usuario2@exemplo.com', 'senha2', 2),
+('Usuario3', 'usuario3@exemplo.com', 'senha3', 3),
+('Usuario4', 'usuario4@exemplo.com', 'senha4', 4),
+('Usuario5', 'usuario5@exemplo.com', 'senha5', 5),
+('Usuario6', 'usuario6@exemplo.com', 'senha6', 6),
+('Usuario7', 'usuario7@exemplo.com', 'senha7', 7),
+('Usuario8', 'usuario8@exemplo.com', 'senha8', 8);
+
+
 
 select *from usuario;
 	
@@ -49,6 +55,8 @@ SELECT pontuacao
     GROUP BY pontuacao,horario
     ORDER BY horario;
     
+
+
 
 
 

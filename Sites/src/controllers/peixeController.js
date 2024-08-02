@@ -10,7 +10,10 @@ function listar(req, res) {
       res.status(500).json({ mensagem: "Erro ao listar peixes" });
     });
 }
-
 module.exports = {
-  listar
+  listar,
 };
+
+
+
+

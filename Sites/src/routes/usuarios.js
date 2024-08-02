@@ -11,5 +11,8 @@ router.post("/cadastrar", function (req, res) {
 router.post("/autenticar", function (req, res) {
     usuarioController.autenticar(req, res);
 });
+router.get('/peixes-favoritos', function (req, res) {
+    usuarioController.obterPeixesFavoritos(req, res);
+});
 
 module.exports = router;
