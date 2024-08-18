@@ -240,7 +240,7 @@ button {
 }
 
 .label-captura {
-  height: 80px;
+  height: 1vh;
 }
 
 .display-none {
@@ -307,7 +307,8 @@ canvas {
   border-radius: 5px;
   text-align: center;
   padding: 2% 5%;
-  width: 130px;
+  max-width: 130px;
+  width: 100%;
   height: 25px;
   align-items: center;
   justify-content: center;
@@ -415,7 +416,7 @@ h1 {
   font-size: 65px;
   flex-direction: column;
   color: white;
-  margin-left: 200px;
+  margin-left: 10%;
 }
 .info-box {
   margin-left: 250px;
@@ -436,14 +437,15 @@ h1 {
   display: flex;
   justify-content: center;
   align-items: flex-end;
-  margin-bottom: 20px;
+  margin-bottom: 2%;
 }
 
 .podium {
   display: flex;
   flex-direction: column;
   align-items: center;
-  width: 160px;
+  width: 100%;
+  max-width: 160px;
   text-align: center;
   margin: 0 20px;
   color: black;
@@ -452,7 +454,8 @@ h1 {
 .primeiro {
   order: 2;
   background-color: #FFD700;
-width: 180px;
+width: 100%;
+max-width: 180px;
   height: 180px;
   display: flex;
   justify-content: center;
@@ -461,17 +464,16 @@ width: 180px;
   margin-top: 5px;
 }
 .podium img{ 
-  width: 50px;
-  height: 50px;
+  width: 3rem;
+  height: 4rem;
   border-radius: 50%;
-  
-
 
 }
 .segundo {
   order: 1;
   background-color: #C0C0C0;
-  width: 180px;
+  max-width: 180px;
+  width: 100%;
   height: 130px;
   display: flex;
   justify-content: center;
@@ -482,7 +484,8 @@ width: 180px;
 .terceiro {
   order: 3;
   background-color: #CD7F32;
-  width: 180px;
+  width: 100%;
+  max-width: 180px;
   height: 100px;
   display: flex;
   justify-content: center;
@@ -506,7 +509,7 @@ width: 180px;
 
 .tabela {
   width: 100%;
-  margin: 20px auto;
+  margin: 5% auto;
   border-collapse: collapse;
 
 }
@@ -517,7 +520,7 @@ width: 180px;
 
 .tabela th,
 .tabela td {
-  padding: 10px;
+  padding: 1%;
   border: 1px solid #000000;
   text-align: center;
  
@@ -557,7 +560,8 @@ td{
 }
 
 .box_percentaul, .box_maior,.box_qtd_tentativas,.box_media_geral,.box_menor{
-  width: 170px;
+  width: 100%;
+  max-width: 170px;
   height: 100px;
   background-color: white;
   border-color: black;
@@ -601,7 +605,8 @@ b{
   height: 25%;
 }
 .favorito  {
-  width: 1000px;
+  max-width: 800px;
+  width:100%;
   color: white;
   font-size: 40px;
   margin-right: 20%;

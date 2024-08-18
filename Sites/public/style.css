@@ -1,5 +1,4 @@
 body {
-    margin-bottom: 0px 0px 0px 0px;
     margin: 0;
     padding: 0;
     font-family: monospace;
@@ -7,25 +6,19 @@ body {
 }
 
 .header {
-    margin: 0px;
+    margin: 0;
     border-bottom: 3px solid rgb(0, 0, 0);
     height: 100px;
     display: flex;
     align-items: center;
     background-color: rgb(25, 56, 70);
-
-
 }
 
 .header img {
-    padding: 0px;
-    margin: 0px;
-    width: 90px;
+    width: 20%; 
     display: flex;
     align-items: start;
     flex-direction: column;
-
-
 }
 
 .container {
@@ -34,7 +27,6 @@ body {
     margin: auto;
     justify-content: space-around;
     color: #fff;
-
 }
 
 .container_blog {
@@ -46,17 +38,17 @@ body {
 }
 
 .titulo {
-    margin: 0px;
+    margin: 0;
     display: flex;
     align-items: center;
-    font-size: 65px;
+    font-size: 3rem; 
     flex-direction: column;
     color: white;
     font-family: Pesca;
 }
 
 .navbar {
-    font-size: 25px;
+    font-size: 1.7rem; 
     display: flex;
     flex-direction: row;
     list-style: none;
@@ -69,55 +61,48 @@ body {
     margin-top: auto;
     background-color: rgb(25, 56, 70);
     font-family: Pesca;
-
 }
-
 
 .header .container {
     justify-content: space-between;
     align-items: center;
     background-color: rgb(25, 56, 70);
-
 }
 
 .banner {
-    padding: 30px 80px 10px 10px;
+    padding: 2.5rem 6.25rem 1rem 1rem;
     color: #ffffff;
-    height: 650px;
+    height: 65vh; /* Use VH para altura */
     background-image: url(Imagens/Design\ sem\ nome\ \(1\).png);
     background-size: cover;
     background-attachment: fixed;
     background-position: center;
     background-repeat: no-repeat;
-    text-shadow: 0px 0px 10px rgba(0, 0, 0, 0.551);
+    text-shadow: 0 0 0.625rem rgba(0, 0, 0, 0.551);
     text-align: center;
     display: flex;
     justify-content: center;
-
 }
-
 
 .social {
     display: flex;
     justify-content: space-evenly;
     background-color: rgb(36, 60, 70);
-    padding: 40px 30px;
+    padding: 2.5rem 1.875rem;
 }
-
 .card_descricao {
-
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 700px;
-    height: 30 0px;
+    width: 80%;
+    max-width: 700px;
+    height: auto;
+    min-height: 300px;
     border-radius: 4px;
-    margin-top: 15px;
+    margin-top: 1rem;
     color: rgb(255, 255, 255);
-    font-size: 17px;
-
-
-
+    font-size: 1rem;
+    padding: 1rem;
 }
 
 .card_escrita {
@@ -125,82 +110,78 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 500px;
-    height: 330px;
+    width: 80%;
+    max-width: 500px;
+    height: auto;
+    min-height: 330px;
     border-radius: 4px;
-    margin-top: 15px;
+    margin-top: 1rem;
     color: white;
-    font-size: 18px;
+    font-size: 1.1rem;
     font-family: Verdana, Geneva, Tahoma, sans-serif;
-
 }
-
-
-
 
 .card_img {
     background-color: white;
     display: flex;
-    height: 400px;
-    width: 400px;
+    height: 40vh;
+    width: 80%;
+    max-width: 400px;
     border-radius: 10px;
-    margin-top: 38px;
+    margin-top: 2rem;
     background-image: url(Imagens/download.png);
-    background-size: 100%;
+    background-size: cover;
+    background-position: center;
     box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.403);
 }
 
 .card_institucional {
-    width: 150px;
+    width: 100%;
+    max-width: 150px;
     text-align: center;
     font-family: 'Pesca';
-
 }
 
-
-
 .card h4 {
-    font-size: 24px;
+    font-size: 1.5rem;
 }
 
 .footer {
     font-family: Verdana, Geneva, Tahoma, sans-serif;
-    margin-top: 30px;
-    height: auto;
+    margin-top: 2rem;
     background-color: rgb(25, 56, 70);
-    border-radius: 2px solid black;
-
+    padding: 1rem;
+    color: #fff;
+    border-radius: 2px;
 }
 
 .footer .container {
-    justify-content: start;
-    align-items: center;
-    height: 120px;
-    color: #fff;
+    display: flex;
     justify-content: space-around;
-    font-size: 15px;
-
+    align-items: center;
+    height: auto;
+    color: #fff;
+    font-size: 1rem;
 }
-/* Container principal para o login */
+
 .login {
     display: flex;
     justify-content: center;
     align-items: center;
     background-size: cover;
     background-position: center;
+    height: 75vh;
 }
 
-/* Container de login com altura ajustada e margem */
 .login .container {
     display: flex;
     justify-content: center;
     align-items: center;
     height: 75vh;
-    margin: 30px;
+    margin: 2rem;
     background-size: cover;
 }
 
-/* Banner de login e cadastro */
 .banner_login_cadastro {
     background-image: url('Imagens/LoginECadastro.jpg');
     background-size: cover;
@@ -209,14 +190,12 @@ body {
     height: 89.4vh;
 }
 
-/* Estilo para títulos dentro do banner */
 .banner_login_cadastro h3 {
-    font-size: 15px;
+    font-size: 1rem;
     font-family: monospace;
-    margin: 5px;
+    margin: 0.5rem;
 }
 
-/* Links dentro do banner */
 .banner_login_cadastro a {
     text-decoration: none;
     color: black;
@@ -229,56 +208,51 @@ body {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    height: 300px;
-    width: 300px;
+    height: 20vh;
+    width: 80%;
+    max-width: 300px;
     border-radius: 10px;
     border: 3px solid #ccc;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
-
 .resposta {
     text-align: center;
-    font-size: 15px;
+    font-size: 1rem;
     color: rgb(247, 0, 0);
-    margin: 5px 0;
+    margin: 0.5rem 0;
     font-family: Verdana, Geneva, Tahoma, sans-serif;
     text-shadow: 0 0 3px rgb(0, 0, 0);
 }
 
-
 .campo {
-    margin-top: 5px;
+    margin-top: 1rem;
     display: flex;
     flex-direction: column;
     align-items: center;
 }
 
-/* Inputs dentro do campo */
 .campo input {
-    width: 200px;
-    padding: 10px 15px;
+    width: 80%;
+    max-width: 230px;
+    padding: 0.5rem;
     border: 2px solid rgb(25, 56, 70);
     border-radius: 5px;
-    margin-bottom: 10px;
+    margin-bottom: 0.5rem;
 }
 
-
 .formulario {
-    margin-top: 5px;
+    margin-top: 1rem;
     display: flex;
     flex-direction: column;
     align-items: center;
     color: white;
-    width: 100%;
+    width: 90%;
     max-width: 400px;
-    margin: 0;
 }
 
-
 .formulario h2 {
-    margin-top: 5px;
-    margin-top: 20px;
+    margin-top: 1rem;
     color: white;
 }
 
@@ -290,8 +264,10 @@ body {
 
 .caixa_formulario_cadastro {
     background-color: rgba(13, 29, 44, 0.7);
-    width: 400px;
-    height: 550px;
+    width: 90%;
+    max-width: 400px;
+    height: auto;
+    min-height: 550px;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -300,30 +276,29 @@ body {
     box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
     color: white;
     font-family: Pesca;
-    padding: 20px;
+    padding: 2rem;
 }
 
 .caixa_formulario_cadastro h2 {
-    
-    margin: 8px;
+    margin: 0.5rem;
 }
 
 .caixa_formulario_cadastro h3 {
     font-family: Pesca;
-    margin: 20px 0;
+    margin: 1rem 0;
 }
-
 
 .caixa_formulario_cadastro a {
     color: white;
     text-decoration: none;
 }
 
-
 .caixa_formulario_login {
-    background-color:  rgba(13, 29, 44, 0.7);
-    width: 400px;
-    height: 400px;
+    background-color: rgba(13, 29, 44, 0.7);
+    width: 90%;
+    max-width: 400px;
+    height: auto;
+    min-height: 400px;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -331,18 +306,17 @@ body {
     border-radius: 4px;
     color: white;
     font-family: Pesca, sans-serif;
-    padding: 20px;
+    padding: 2rem;
 }
 
-
 button {
-    margin: 10px 0;
+    margin: 1rem 0;
     background: #144a63;
     color: white;
-    padding: 10px 15px;
+    padding: 0.5rem 1rem;
     border: none;
     border-radius: 5px;
-    font-size: 16px;
+    font-size: 1rem;
     cursor: pointer;
     transition: background 0.3s ease;
 }
@@ -351,36 +325,34 @@ button:hover {
     background: #0f3a4d;
 }
 
-
 input {
-    width: 230px;
-    padding: 10px 15px;
+    width: 98%;
+    max-width: 230px;
+    padding: 0.5rem;
     border: 2px solid #ccc;
     border-radius: 5px;
-    margin-bottom: px;
+    margin-bottom: 0.5rem;
     text-align: center;
 }
 
-.listapeixes{
-
-    width: 270px;
-    padding: 10px 15px;
+.listapeixes {
+    width: 91%;
+    max-width: 270px;
+    padding: 0.5rem;
     border: 2px solid #ccc;
     border-radius: 5px;
-    margin-bottom: px;
+    margin-bottom: 0.5rem;
     text-align: center;
-
+    margin-left: 8%;
 }
-
 
 span {
-    font-size: 15px;
+    font-size: 1rem;
 }
 
-
 .agora {
-    font-size: 30px;
-    font-style: bold;
+    font-size: 1.5rem;
+    font-weight: bold;
     text-shadow: 0px 0px 5px black;
 }
 
@@ -391,7 +363,7 @@ span {
     align-items: center;
     text-decoration: none;
     width: 100%;
-    font-size: 25px;
+    font-size: 1.5rem;
     font-family: Pesca;
 }
 
@@ -402,305 +374,135 @@ a {
 
 .pesquisa_blog li {
     display: inline;
-    justify-content: space-between;
 }
 
 .subtitulo {
-    margin: 20px;
+    margin: 1rem;
     display: flex;
     align-items: center;
     font-weight: bold;
-    font-size: 35px;
+    font-size: 2.2rem;
     flex-direction: column;
     color: white;
-    text-shadow: 0px 0px 0px 0px black;
     font-family: Pesca;
 }
 
 .subtitulo2 {
-    margin: 20px;
+    margin: 1rem;
     display: flex;
     align-items: center;
     font-weight: bold;
-    font-size: 30px;
+    font-size: 2rem;
     flex-direction: column;
     color: white;
-    text-shadow: 0px 0px 0px 0px black;
     font-family: Pesca;
 }
 
-
 .social_blog {
     background-color: rgb(36, 60, 70);
-    padding: 40px 30px;
+    padding: 2rem;
     display: flex;
     flex-direction: row;
     justify-content: space-around;
     flex-wrap: wrap;
-
 }
 
-.card_escrita:hover {
-    transform: scale(102%);
-    filter: drop-shadow(0px 0px 5px rgb(0, 0, 0));
-    cursor: grab
-}
-
+.card_escrita:hover,
 .card_descricao:hover {
-    transform: scale(102%);
+    transform: scale(1.02);
     filter: drop-shadow(0px 0px 5px rgb(0, 0, 0));
-    cursor: grab
+    cursor: pointer;
 }
 
 @font-face {
     font-family: 'Pesca';
-    src: url('Pieces\ of\ Eight.ttf');
+    src: url('Pieces of Eight.ttf');
 }
 
 .trititulo {
-    font-size: 35px;
+    font-size: 2.2rem;
     display: flex;
     justify-content: space-around;
     color: white;
     font-family: Pesca;
-
 }
 
 .flip-card {
     background-color: transparent;
-    width: 400px;
-    height: 360px;
+    width: 80%;
+    max-width: 400px;
+    height: auto;
+    min-height: 360px;
     perspective: 1000px;
-
-
 }
 
-.flip-card-pratica {
-    position: relative;
-    width: 400px;
-    height: 360px;
-    border-radius: 3%;
-    text-align: center;
-    transition: transform 0.8s;
-    transform-style: preserve-3d;
-    background-image: url(Imagens/pratica-1024x683.jpg);
-    background-size: cover;
-    background-repeat: no-repeat;
-}
-
-.flip-card-atencao {
-    position: relative;
-    width: 400px;
-    height: 360px;
-    border-radius: 3%;
-    text-align: center;
-    transition: transform 0.8s;
-    transform-style: preserve-3d;
-    background-image: url(Imagens/jovem-pescador-pescando-no-lago-ou-rio-vista-traseira-do-cara-concentrado-esperando-para-pegar-alg.avif);
-    background-size: cover;
-    background-repeat: no-repeat;
-}
-
-.flip-card-comunicacao {
-    position: fixed;
-    width: 400px;
-    height: 360px;
-    border-radius: 3%;
-    text-align: center;
-    transition: transform 0.8s;
-    transform-style: preserve-3d;
-    background-image: url(Imagens/Comunicacao_329181-20049.avif);
-    background-size: cover;
-    background-repeat: no-repeat;
-}
-
-.flip-card-Hora {
-    position: fixed;
-    width: 400px;
-    height: 360px;
-    border-radius: 3%;
-    text-align: center;
-    transition: transform 0.8s;
-    transform-style: preserve-3d;
-    background-image: url(Imagens/sielencio.jpg);
-    background-size: cover;
-    background-repeat: no-repeat;
-}
-
-.flip-card-aves {
-    position: fixed;
-    width: 400px;
-    height: 360px;
-    border-radius: 3%;
-    text-align: center;
-    transition: transform 0.8s;
-    transform-style: preserve-3d;
-    background-image: url(Imagens/aves.jpg);
-    background-size: cover;
-    background-repeat: no-repeat;
-}
-
-.flip-card-ilhas {
-    position: fixed;
-    width: 400px;
-    height: 360px;
-    border-radius: 3%;
-    text-align: center;
-    transition: transform 0.8s;
-    transform-style: preserve-3d;
-    background-image: url(Imagens/pedras.jpg);
-    background-size: cover;
-    background-repeat: no-repeat;
-}
-
-.flip-card-capim {
-    position: fixed;
-    width: 400px;
-    height: 360px;
-    border-radius: 3%;
-    text-align: center;
-    transition: transform 0.8s;
-    transform-style: preserve-3d;
-    background-image: url(Imagens/capim.jpg);
-    background-size: cover;
-    background-repeat: no-repeat;
-}
-
-.flip-card-canais {
-    position: fixed;
-    width: 400px;
-    height: 360px;
-    border-radius: 3%;
-    text-align: center;
-    transition: transform 0.8s;
-    transform-style: preserve-3d;
-    background-image: url(Imagens/canais.jpg);
-    background-size: cover;
-    background-repeat: no-repeat;
-}
-
-.flip-card-leve {
-    position: fixed;
-    width: 400px;
-    height: 360px;
-    border-radius: 3%;
-    text-align: center;
-    transition: transform 0.8s;
-    transform-style: preserve-3d;
-    background-image: url(Imagens/varaleve.jpg);
-    background-size: cover;
-    background-repeat: no-repeat;
-}
-
-.flip-card-media {
-    position: fixed;
-    width: 400px;
-    height: 360px;
-    border-radius: 3%;
-    text-align: center;
-    transition: transform 0.8s;
-    transform-style: preserve-3d;
-    background-image: url(Imagens/varamedia.webp);
-    background-size: cover;
-    background-repeat: no-repeat;
-}
-
-.flip-card-pesada {
-    position: fixed;
-    width: 400px;
-    height: 360px;
-    border-radius: 3%;
-    text-align: center;
-    transition: transform 0.8s;
-    transform-style: preserve-3d;
-    background-image: url(Imagens/varapesada.webp);
-    background-size: cover;
-    background-repeat: no-repeat;
-}
-
+.flip-card-pratica,
+.flip-card-atencao,
+.flip-card-comunicacao,
+.flip-card-Hora,
+.flip-card-aves,
+.flip-card-ilhas,
+.flip-card-capim,
+.flip-card-canais,
+.flip-card-leve,
+.flip-card-media,
+.flip-card-pesada,
 .flip-card-musky {
-    position: fixed;
-    width: 400px;
-    height: 360px;
+    position: relative;
+    width: 100%;
+    height: 100%;
     border-radius: 3%;
+    text-align: center;
     transition: transform 0.8s;
     transform-style: preserve-3d;
-    background-image: url(Imagens/varamusky.webp);
     background-size: cover;
     background-repeat: no-repeat;
 }
 
+.flip-card-pratica { background-image: url(Imagens/pratica-1024x683.jpg); }
+.flip-card-atencao { background-image: url(Imagens/jovem-pescador-pescando-no-lago-ou-rio-vista-traseira-do-cara-concentrado-esperando-para-pegar-alg.avif); }
+.flip-card-comunicacao { background-image: url(Imagens/Comunicacao_329181-20049.avif); }
+.flip-card-Hora { background-image: url(Imagens/sielencio.jpg); }
+.flip-card-aves { background-image: url(Imagens/aves.jpg); }
+.flip-card-ilhas { background-image: url(Imagens/pedras.jpg); }
+.flip-card-capim { background-image: url(Imagens/capim.jpg); }
+.flip-card-canais { background-image: url(Imagens/canais.jpg); }
+.flip-card-leve { background-image: url(Imagens/varaleve.jpg); }
+.flip-card-media { background-image: url(Imagens/varamedia.webp); }
+.flip-card-pesada { background-image: url(Imagens/varapesada.webp); }
+.flip-card-musky { background-image: url(Imagens/varamusky.webp); }
 
-.flip-card:hover .flip-card-pratica {
-    transform: rotateY(180deg);
-}
-
-.flip-card:hover .flip-card-atencao {
-    transform: rotateY(180deg);
-}
-
-.flip-card:hover .flip-card-comunicacao {
-    transform: rotateY(180deg);
-}
-
-.flip-card:hover .flip-card-Hora {
-    transform: rotateY(180deg);
-}
-
-.flip-card:hover .flip-card-aves {
-    transform: rotateY(180deg);
-}
-
-.flip-card:hover .flip-card-ilhas {
-    transform: rotateY(180deg);
-}
-
-.flip-card:hover .flip-card-capim {
-    transform: rotateY(180deg);
-}
-
-.flip-card:hover .flip-card-canais {
-    transform: rotateY(180deg);
-}
-
-.flip-card:hover .flip-card-leve {
-    transform: rotateY(180deg);
-}
-
-.flip-card:hover .flip-card-media {
-    transform: rotateY(180deg);
-}
-
-.flip-card:hover .flip-card-pesada {
-    transform: rotateY(180deg);
-}
-
-.flip-card:hover .flip-card-musky {
-    transform: rotateY(180deg);
-}
+.flip-card:hover .flip-card-pratica { transform: rotateY(180deg); }
+.flip-card:hover .flip-card-atencao { transform: rotateY(180deg); }
+.flip-card:hover .flip-card-comunicacao { transform: rotateY(180deg); }
+.flip-card:hover .flip-card-Hora { transform: rotateY(180deg); }
+.flip-card:hover .flip-card-aves { transform: rotateY(180deg); }
+.flip-card:hover .flip-card-ilhas { transform: rotateY(180deg); }
+.flip-card:hover .flip-card-capim { transform: rotateY(180deg); }
+.flip-card:hover .flip-card-canais { transform: rotateY(180deg); }
+.flip-card:hover .flip-card-leve { transform: rotateY(180deg); }
+.flip-card:hover .flip-card-media { transform: rotateY(180deg); }
+.flip-card:hover .flip-card-pesada { transform: rotateY(180deg); }
+.flip-card:hover .flip-card-musky { transform: rotateY(180deg); }
 
 .flip-card-front,
 .flip-card-back {
     position: absolute;
     width: 100%;
     height: 100%;
-    -webkit-backface-visibility: visible;
     backface-visibility: hidden;
     border-radius: 3%;
-    font-size: 15px;
+    font-size: 1rem;
 }
-
 
 .flip-card-back {
     transform: rotateY(180deg);
     background-color: White;
-    font-size: 17px;
+    font-size: 1.1rem;
     text-align: center;
-    justify-content: center;
     display: flex;
     align-items: center;
-
-
+    justify-content: center;
 }
 
 #cardSucesso {
@@ -709,25 +511,40 @@ a {
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    padding: 20px;
+    padding: 1rem;
     background-color: #99b88d;
     border: 1px solid #d6e9c6;
     color: #3c763d;
     border-radius: 5px;
     text-align: center;
+}
 
-  }
-  
-  #cardSucesso button {
-    margin-top: 10px;
-    padding: 10px;
+#cardSucesso button {
+    margin-top: 1rem;
+    padding: 0.5rem;
     background-color: #4CAF50;
     color: white;
     border: none;
     border-radius: 5px;
     cursor: pointer;
-  }
-  
-  #cardSucesso button:hover {
+}
+
+#cardSucesso button:hover {
     background-color: #45a049;
-  }
+}
+
+/* Media Queries */
+@media (max-width: 768px) {
+    .card_descricao, .card_escrita, .card_img, .card, .formulario, .caixa_formulario_cadastro, .caixa_formulario_login {
+        width: 90%;
+        height: auto;
+    }
+
+    .login, .banner_login_cadastro {
+        height: auto;
+    }
+
+    .footer .container {
+        flex-direction: column;
+    }
+}
