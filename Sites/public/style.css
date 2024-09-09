@@ -263,11 +263,12 @@ body {
 }
 
 .caixa_formulario_cadastro {
+    margin-top: 3%;
     background-color: rgba(13, 29, 44, 0.7);
     width: 90%;
     max-width: 400px;
     height: auto;
-    min-height: 550px;
+    min-height: 450px;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -534,17 +535,117 @@ a {
 }
 
 /* Media Queries */
-@media (max-width: 768px) {
-    .card_descricao, .card_escrita, .card_img, .card, .formulario, .caixa_formulario_cadastro, .caixa_formulario_login {
+@media (max-width: 1024px) {
+    .header img {
+        width: 15%;
+    }
+    
+    .navbar {
+        width: 250px;
+        font-size: 1.5rem;
+    }
+    
+    .container, .container_blog {
         width: 90%;
-        height: auto;
+    }
+    
+    .titulo {
+        font-size: 2.5rem;
+    }
+    
+    .banner {
+        padding: 2rem;
+        height: 50vh;
+    }
+    
+    .card_descricao, .card_escrita, .card_img, .card {
+        width: 90%;
+        max-width: 350px;
+    }
+    
+    .formulario {
+        width: 80%;
+        max-width: 350px;
+    }
+    
+    .caixa_formulario_cadastro, .caixa_formulario_login {
+        width: 60%;
+        max-width: 300px;
+    }
+}
+
+@media (max-width: 768px) {
+    .card_descricao, .card_escrita, .card_img, .card {
+        width: 90%;
+        max-width: 300px;
     }
 
     .login, .banner_login_cadastro {
         height: auto;
+        padding: 1.5rem;
     }
 
     .footer .container {
         flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .navbar {
+        font-size: 1.4rem;
+        width: 100%;
+    }
+    
+    .header img {
+        width: 30%;
+    }
+
+    .titulo {
+        font-size: 2rem;
+    }
+
+    .social {
+        flex-direction: column;
+        padding: 1.5rem;
+    }
+
+    .pesquisa_blog {
+        flex-direction: column;
+        font-size: 1.2rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .header, .navbar, .footer {
+        padding: 1rem;
+    }
+    
+    .titulo {
+        font-size: 1.5rem;
+    }
+    
+    .banner {
+        padding: 1rem;
+        height: 40vh;
+    }
+
+    .card_descricao, .card_escrita, .card_img, .card {
+        width: 100%;
+        max-width: none;
+    }
+
+    .formulario, .caixa_formulario_cadastro, .caixa_formulario_login {
+        width: 95%;
+    }
+    
+    .social {
+        padding: 1rem;
+    }
+    
+    .pesquisa_blog {
+        font-size: 1rem;
+    }
+
+    .flip-card {
+        width: 100%;
     }
 }
