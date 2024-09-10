@@ -40,7 +40,7 @@ body {
 .titulo {
     margin: 0;
     display: flex;
-    align-items: center;
+    align-items: start;
     font-size: 3rem; 
     flex-direction: column;
     color: white;
@@ -124,7 +124,7 @@ body {
 .card_img {
     background-color: white;
     display: flex;
-    height: 40vh;
+    height: 60vh;
     width: 80%;
     max-width: 300px;
     border-radius: 10px;
@@ -182,14 +182,20 @@ body {
     background-size: cover;
 }
 
-.banner_login_cadastro {
+.banner_cadastro {
     background-image: url('Imagens/LoginECadastro.jpg');
     background-size: cover;
     background-attachment: fixed;
     background-repeat: no-repeat;
-    height: 86.6vh;
+    height: 130vh;
 }
-
+.banner_login {
+    background-image: url('Imagens/LoginECadastro.jpg');
+    background-size: cover;
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+    height: 81.8vh;
+}
 .banner_login_cadastro h3 {
     font-size: 1rem;
     font-family: monospace;
@@ -247,8 +253,8 @@ body {
     flex-direction: column;
     align-items: center;
     color: white;
-    width: 90%;
-    max-width: 400px;
+    width: 910%;
+    max-width: 300px;
 }
 
 .formulario h2 {
@@ -263,12 +269,12 @@ body {
 }
 
 .caixa_formulario_cadastro {
-    margin-top: 7%;
+    margin-top: 30%;
+    margin-left:3%;
     background-color: rgba(13, 29, 44, 0.7);
     width: 90%;
     max-width: 400px;
-    height: auto;
-    min-height: 450px;
+    height: 500px;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -286,7 +292,7 @@ body {
 
 .caixa_formulario_cadastro h3 {
     font-family: Pesca;
-    margin: 1rem 0;
+   
 }
 
 .caixa_formulario_cadastro a {
@@ -296,10 +302,11 @@ body {
 
 .caixa_formulario_login {
     background-color: rgba(13, 29, 44, 0.7);
+    margin-left:3%;
+    margin-top: 5%;
     width: 90%;
     max-width: 400px;
-    height: auto;
-    min-height: 400px;
+    height: 300px;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -311,7 +318,7 @@ body {
 }
 
 button {
-    margin: 1rem 0;
+  
     background: #144a63;
     color: white;
     padding: 0.5rem 1rem;
@@ -332,7 +339,7 @@ input {
     padding: 0.5rem;
     border: 2px solid #ccc;
     border-radius: 5px;
-    margin-bottom: 0.5rem;
+
     text-align: center;
 }
 
@@ -568,10 +575,7 @@ a {
         max-width: 350px;
     }
     
-    .caixa_formulario_cadastro, .caixa_formulario_login {
-        width: 60%;
-        max-width: 300px;
-    }
+    
 }
 
 @media (max-width: 768px) {

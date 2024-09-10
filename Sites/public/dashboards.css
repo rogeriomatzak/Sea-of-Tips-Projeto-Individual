@@ -14,6 +14,7 @@ body {
 /* Estilos do menu lateral */
 .header-left {
   position: fixed;
+  padding: 2px;
   top: 0;
   left: 0;
   height: 100vh;
@@ -58,6 +59,7 @@ body {
   margin: 10px 0;
   color: inherit;
   text-decoration: none;
+
 }
 
 /* Estilos da área do quiz */
@@ -66,8 +68,8 @@ body {
   flex-direction: row;
   justify-content: center;
   align-items: center;
-  margin-left: 350px;
-  margin-top: 275px;
+  margin-left: 285px;
+  margin-top: 150px;
   padding: 40px;
   width: 780px;
   height: fit-content;
@@ -153,13 +155,13 @@ body {
 }
 
 .dash {
-  width: 1000px;
-  height: 600px;
+  width: 1050px;
+  max-height: 800px;
+  height: 20%;
   position: relative;
-  top: 100px;
   left: 10%;
   background-color: rgb(36, 60, 70);
-  overflow: auto;
+
   color: #fff;
 }
 
@@ -214,6 +216,8 @@ button {
   color: rgb(216, 216, 216);
   display: flex;
   justify-content: center;
+  margin-top: 0.9%;
+  margin-right: 5%;
 }
 
 .btn-white {
@@ -237,11 +241,7 @@ button {
   display: block;
 }
 
-canvas {
-  width: 100% !important;
-  height: 100% !important;
-  color: #fff;
-}
+
 
 /* Estilos dos gráficos de 2023 */
 .header-left img {
@@ -292,6 +292,7 @@ canvas {
   align-items: center;
   justify-content: center;
   display: flex;
+ 
 }
 
 .fas fa-home {
@@ -368,7 +369,7 @@ h1 {
   justify-content: space-around;
   background-color: rgb(36, 60, 70);
   margin-top: 5%;
-  padding: 20px;
+  padding: 10px;
   margin-left: 20%;
   box-sizing: border-box;
 }
@@ -404,7 +405,7 @@ h1 {
   display: flex;
   justify-content: center;
   align-items: flex-end;
-  margin-bottom: 2%;
+margin-top: 0px;
 }
 
 .podium {
@@ -521,6 +522,7 @@ td {
 }
 
 .boxes-container {
+
   display: flex;
   justify-content: space-around;
   flex-direction: row;
@@ -568,8 +570,8 @@ b {
   display: flex;
   justify-content: center;
   align-items: center;
-  max-width: 600px;
-  margin-left: 30%;
+  max-width: 450px;
+  margin-left: 35%;
   width: 100%;
   color: white;
 }
