@@ -106,12 +106,12 @@ body {
 }
 
 .card_escrita {
-    padding: 2%;
+
     display: flex;
     justify-content: center;
     align-items: center;
     width: 80%;
-    max-width: 500px;
+    max-width: 600px;
     height: auto;
     min-height: 330px;
     border-radius: 4px;
@@ -126,7 +126,7 @@ body {
     display: flex;
     height: 40vh;
     width: 80%;
-    max-width: 400px;
+    max-width: 300px;
     border-radius: 10px;
     margin-top: 2rem;
     background-image: url(Imagens/download.png);
@@ -187,7 +187,7 @@ body {
     background-size: cover;
     background-attachment: fixed;
     background-repeat: no-repeat;
-    height: 89.4vh;
+    height: 86.6vh;
 }
 
 .banner_login_cadastro h3 {
@@ -263,7 +263,7 @@ body {
 }
 
 .caixa_formulario_cadastro {
-    margin-top: 3%;
+    margin-top: 7%;
     background-color: rgba(13, 29, 44, 0.7);
     width: 90%;
     max-width: 400px;
@@ -559,7 +559,7 @@ a {
     }
     
     .card_descricao, .card_escrita, .card_img, .card {
-        width: 90%;
+        width: 10%;
         max-width: 350px;
     }
     

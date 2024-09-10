@@ -67,7 +67,7 @@ body {
   justify-content: center;
   align-items: center;
   margin-left: 350px;
-  margin-top: 335px;
+  margin-top: 275px;
   padding: 40px;
   width: 780px;
   height: fit-content;
@@ -154,11 +154,11 @@ body {
 
 .dash {
   width: 1000px;
+  height: 600px;
   position: relative;
   top: 100px;
   left: 10%;
   background-color: rgb(36, 60, 70);
-  height: 800px;
   overflow: auto;
   color: #fff;
 }
@@ -204,9 +204,10 @@ button {
 }
 
 .graph {
-  width: 70%;
+  width: 60%;
+  height: 340px;
   margin: auto;
-  padding-top: 10px;
+
 }
 
 .tituloGraficos {
@@ -341,7 +342,7 @@ canvas {
 }
 
 h1 {
-  margin-top: 150px;
+  display: flex;
   justify-content: center;
   margin-left: 250px;
   color: white;
@@ -366,19 +367,12 @@ h1 {
   display: flex;
   justify-content: space-around;
   background-color: rgb(36, 60, 70);
+  margin-top: 5%;
   padding: 20px;
   margin-left: 20%;
   box-sizing: border-box;
 }
 
-.titulo {
-  display: flex;
-  align-items: center;
-  font-size: 65px;
-  flex-direction: column;
-  color: white;
-  margin-left: 120px;
-}
 
 .titulo_2 {
   margin: 0px;
@@ -394,16 +388,16 @@ h1 {
   margin-left: 250px;
   color: white;
   width: 900px;
-  height: 800px;
+  height: fit-content;
   margin-left: 20%;
   margin-top: 0;
 }
 
 .titulo-info {
   font-size: 40px;
-  margin-left: 40%;
+  margin-left: 0%;
   margin-bottom: 7%;
-  margin-top: 7%;
+
 }
 
 .podium-container {
@@ -552,6 +546,7 @@ b {
 }
 
 .select-grafico {
+  width: 1000px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -569,7 +564,27 @@ b {
   color: white;
   margin-top: 23%;
 }
-
+.graficofavorito{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  max-width: 600px;
+  margin-left: 30%;
+  width: 100%;
+  color: white;
+}
+.favorito{
+  display: flex;
+  width: fit-content;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  font-weight: bold;
+  font-size: 27px;
+  margin-top: 10%;
+  margin-left: 40%;
+  
+}
 /* Estilos responsivos */
 @media (max-width: 1200px) {
   .dash {
@@ -582,21 +597,13 @@ b {
     width: 15%;
   }
 
-  .quiz {
-    margin-left: 20px;
-    margin-top: 20px;
-    width: auto;
-    padding: 20px;
-  }
+  
 
   .btns-dash {
     padding: 0 10% 0 10%;
   }
 
-  .titulo {
-    font-size: 50px;
-    margin-left: 20px;
-  }
+
 
   .titulo_2 {
     font-size: 50px;
@@ -605,7 +612,8 @@ b {
 
   .info-box {
     margin-left: 10%;
-    width: 80%;
+    width: 70%;
+  
   }
 
   .social {
@@ -657,10 +665,6 @@ b {
     margin-left: 2%;
   }
 
-  .info-box {
-    margin-left: 0;
-    width: 100%;
-  }
 
   .social {
     margin-left: 0;
