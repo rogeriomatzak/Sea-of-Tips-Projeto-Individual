@@ -1,65 +1,65 @@
-create database seaoftipes;
-use seaoftipes;
+CREATE DATABASE seaoftipes;
+USE seaoftipes;
 
-Create table peixes(
-idPeixe int primary key auto_increment,
-nome varchar(45));
+CREATE TABLE peixes (
+    idPeixe INT PRIMARY KEY AUTO_INCREMENT,
+    nome VARCHAR(45)
+);
 
-insert into peixes value 
-(default,'Dourado' ),
-(default,'Pintado' ),
-(default,'Pacu' ),
-(default,'Tucunaré' ),
-(default,'Carpa' ),
-(default,'Pirarucu' ),
-(default,'Peixe-Espada' ),
-(default,'Robalo' );
+INSERT INTO peixes (nome) VALUES 
+    ('Dourado'),
+    ('Pintado'),
+    ('Pacu'),
+    ('Tucunaré'),
+    ('Carpa'),
+    ('Pirarucu'),
+    ('Peixe-Espada'),
+    ('Robalo');
 
-select *from peixes;
+SELECT * FROM peixes;
 
-create table usuario(
-idUsuario int primary key auto_increment,
-nome varchar (45),
-email varchar (45),
-senha varchar (45),
-fkPeixe int ,
-foreign key (fkPeixe) references peixes (idPeixe));
+CREATE TABLE usuario (
+    idUsuario INT PRIMARY KEY AUTO_INCREMENT,
+    nome VARCHAR(45),
+    email VARCHAR(45),
+    senha VARCHAR(45),
+    fkPeixe INT,
+    FOREIGN KEY (fkPeixe) REFERENCES peixes(idPeixe)
+);
 
 INSERT INTO usuario (nome, email, senha, fkPeixe) VALUES 
-('Usuario1', 'usuario1@exemplo.com', 'senha1', 1),
-('Usuario2', 'usuario2@exemplo.com', 'senha2', 2),
-('Usuario3', 'usuario3@exemplo.com', 'senha3', 3),
-('Usuario4', 'usuario4@exemplo.com', 'senha4', 4),
-('Usuario5', 'usuario5@exemplo.com', 'senha5', 5),
-('Usuario6', 'usuario6@exemplo.com', 'senha6', 6),
-('Usuario7', 'usuario7@exemplo.com', 'senha7', 7),
-('Usuario8', 'usuario8@exemplo.com', 'senha8', 8);
+    ('Usuario1', 'usuario1@exemplo.com', 'senha1', 1),
+    ('Usuario2', 'usuario2@exemplo.com', 'senha2', 2),
+    ('Usuario3', 'usuario3@exemplo.com', 'senha3', 3),
+    ('Usuario4', 'usuario4@exemplo.com', 'senha4', 4),
+    ('Usuario5', 'usuario5@exemplo.com', 'senha5', 5),
+    ('Usuario6', 'usuario6@exemplo.com', 'senha6', 6),
+    ('Usuario7', 'usuario7@exemplo.com', 'senha7', 7),
+    ('Usuario8', 'usuario8@exemplo.com', 'senha8', 8);
 
+SELECT * FROM usuario;
 
+CREATE TABLE quiz (
+    idTentativa INT PRIMARY KEY AUTO_INCREMENT,
+    fkUsuario INT,
+    horario TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    pontuacao INT CHECK (pontuacao BETWEEN 0 AND 10),
+    FOREIGN KEY (fkUsuario) REFERENCES usuario(idUsuario)
+);
 
-select *from usuario;
-	
-create table quiz(
-idTentativa int primary key auto_increment,
-fkUsuario int,
-horario timestamp default current_timestamp,
-pontuacao int,
-constraint foreign key (fkUsuario) references usuario(idUsuario));
+INSERT INTO quiz (fkUsuario, pontuacao) VALUES 
+    (1, 8),
+    (2, 7),
+    (3, 9),
+    (4, 6),
+    (5, 10),
+    (6, 5);
 
-select *from quiz;
+SELECT * FROM quiz;
 
 SELECT pontuacao
-    FROM quiz
-    JOIN usuario ON fkUsuario = idUsuario
-    WHERE idUsuario =1
-    GROUP BY pontuacao,horario
-    ORDER BY horario;
-    
-
-
-
-
-
-
-
-
+FROM quiz
+JOIN usuario ON fkUsuario = idUsuario
+WHERE idUsuario = 1
+GROUP BY pontuacao, horario
+ORDER BY horario;
