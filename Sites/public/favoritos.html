@@ -10,6 +10,9 @@
     <link rel="stylesheet" href="dashboards.css">
     <script src="../js/sessao.js"></script>
     <script src="https://kit.fontawesome.com/9f7414eb10.js" crossorigin="anonymous"></script>
+
+   
+   
 </head>
 
 <body>
@@ -41,78 +44,88 @@
     </div>
 
     <div class="header-right">
-        <h1>Grafíco de Peixes Favoritos</h1>
+        <h1>Gráfico de Peixes Favoritos</h1>
         <canvas id="myPieChart" class="graficofavorito"></canvas>
     </div>
 
     <script>
         document.getElementById('b_usuario').innerHTML = sessionStorage.NOME_USUARIO;
-        // Função para carregar dados e exibir gráfico-- Alteraçãoes do dia 30/08
+
+        // Função para carregar dados e exibir gráfico
         function carregarDadosEExibirGrafico() {
-            // Faz uma requisição para o endpoint '/usuarios/peixes-favoritos'
-            fetch('/usuarios/peixes-favoritos')
-                // Processa a resposta da requisição
-                .then(response => {
-                    // Se a resposta não for ok, lança um erro com o status HTTP
-                    if (!response.ok) {
-                        throw new Error(`HTTP error! Status: ${response.status}`);
-                    }
-                    // Converte a resposta para JSON
-                    return response.json();
-                })
-                // Processa os dados recebidos
-                .then(data => {
-                    console.log('Dados recebidos:', data);
-                    // Se não houver dados ou o array estiver vazio, lança um erro
-                    if (!data || data.length === 0) {
-                        throw new Error('Nenhum dado encontrado.');
-                    }
-                    // Extrai os nomes dos peixes e as quantidades dos dados recebidos
-                    const labels = data.map(item => item.nomePeixe);
-                    const quantities = data.map(item => item.quantidade);
-                    // Obtém o contexto do canvas onde o gráfico será desenhado
-                    const ctx = document.getElementById('myPieChart');
-                    // Cria um novo gráfico do tipo 'pie' (pizza)
-                    new Chart(ctx, {
-                        type: 'pie',
-                        data: {
-                            labels: labels,
-                            datasets: [{
-                                data: quantities,
-                                backgroundColor: [
-                                    '#FF6384', '#36A2EB', '#FFCE56', '#E9DAC3', '#6E7B8B',
-                                    '#FF9F40', '#4BC0C0', '#9966FF', '#FFB6C1', '#7F8C8D',
-                                    '#E74C3C', '#3498DB', '#2ECC71', '#F39C12', '#D35400',
-                                    '#9B59B6', '#34495E', '#1ABC9C', '#E67E22', '#BDC3C7'
-                                ],
-                                borderColor: '#fff', // Cor da borda das fatias do gráfico
-                                borderWidth: 1 // Largura da borda das fatias do gráfico
-                            }]
-                        },
-                        options: {
-                            responsive: true, // Torna o gráfico responsivo
-                            plugins: {
-                                legend: {
-                                    position: 'bottom', // Posição da legenda do gráfico
-                                    labels: {
-                                        color: '#fff' // Cor dos textos da legenda
-                                    }
-                                },
-                                title: {
-                                    display: true, // Exibe o título do gráfico
-                                }
+    // Faz uma requisição para o endpoint '/usuarios/peixes-favoritos' usando o método fetch
+    fetch('/usuarios/peixes-favoritos')
+        // Processa a resposta da requisição
+        .then(response => {
+            // Verifica se a resposta HTTP não está OK (status diferente de 200)
+            if (!response.ok) {
+                // Lança um erro se o status da resposta for diferente de OK
+                throw new Error(`HTTP error! Status: ${response.status}`);
+            }
+            // Converte a resposta para o formato JSON
+            return response.json();
+        })
+        // Processa os dados recebidos após a conversão para JSON
+        .then(data => {
+            // Exibe os dados no console para verificação (debug)
+            console.log('Dados recebidos:', data);
+
+            // Verifica se não há dados ou se o array de dados está vazio
+            if (!data || data.length === 0) {
+                // Lança um erro se nenhum dado for encontrado
+                throw new Error('Nenhum dado encontrado.');
+            }
+
+            // Mapeia os nomes dos peixes e as quantidades de cada peixe para arrays separados
+            const labels = data.map(item => item.nomePeixe);
+            const quantities = data.map(item => item.quantidade);
+
+            // Obtém o elemento canvas onde o gráfico será renderizado
+            const ctx = document.getElementById('myPieChart');
+
+            // Cria um novo gráfico de pizza (pie chart) usando a biblioteca
+            new Chart(ctx, {
+                type: 'pie', // Define o tipo do gráfico como pizza
+                data: {
+                    labels: labels, // Define as legendas (nomes dos peixes)
+                    datasets: [{
+                        data: quantities, // Define os dados (quantidades dos peixes)
+                        backgroundColor: [ // Cores de fundo para as  cada peixe   no gráfico
+                            '#FF6384', '#36A2EB', '#FFCE56', '#E9DAC3', '#6E7B8B',
+                            '#FF9F40', '#4BC0C0', '#9966FF', '#FFB6C1', '#7F8C8D',
+                            '#E74C3C', '#3498DB', '#2ECC71', '#F39C12', '#D35400',
+                            '#9B59B6', '#34495E', '#1ABC9C', '#E67E22', '#BDC3C7'
+                        ],
+                        borderColor: '#fff', // Cor da borda 
+                        borderWidth: 1 // Largura da borda 
+                    }]
+                },
+                options: {
+                    plugins: {
+                        // Configurações da legenda do gráfico
+                        legend: {
+                            position: 'right', // Posiciona a legenda à direita do gráfico
+                            labels: {
+                                color: '#fff', // Define a cor do texto da legenda
+                                boxWidth: 20, // Define a largura das caixas coloridas na legenda
+                                padding: 18 // Define o espaçamento entre os itens da legenda
                             }
-                        }
-                    });
-                })
-                .catch(error => {
-                    console.error('Erro ao carregar dados:', error);
-                    // Exibe uma mensagem de erro no corpo da página
-                    document.body.innerHTML += `<p>Erro ao carregar dados: ${error.message}</p>`;
-                });
-        }
-        // Chama a função quando a página é carregada
-        window.onload = carregarDadosEExibirGrafico;
+                        },
+                       
+                    }
+                }
+            });
+        })
+        // Trata os erros caso ocorra algum problema na requisição ou no processamento dos dados
+        .catch(error => {
+            // Exibe o erro no console
+            console.error('Erro ao carregar dados:', error);
+            // Adiciona uma mensagem de erro ao corpo da página HTML
+            document.body.innerHTML += `<p>Erro ao carregar dados: ${error.message}</p>`;
+        });
+}
+    // Chama a função carregarDadosEExibirGrafico quando a página for carregada
+    window.onload = carregarDadosEExibirGrafico;
 
     </script>
 </body>
